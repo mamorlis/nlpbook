@@ -1,0 +1,301 @@
+sentence_ID	text_a	text_b	流暢性	妥当性	labels	流暢性	妥当性	DeepL	流暢性	妥当性
+1	Show your own business.	あなた自身のビジネスを見せてください。	4	5	4.5					
+2	He lived a hard life.	彼は苦労していた。	4	5	4.5					
+3	No . I'm sorry, I've got to go back early.	いいえ 。申し訳ありませんが、早めに戻らなければなりません。	5	5	5					
+4	She wrote to me to come at once.	彼女はすぐに来るように私に手紙を書きました。	4	5	4.5					
+5	I can't swim at all.	まったく泳ぐことはできません。	4	4	4					
+6	Is there any hope of his success?	彼の成功への希望はありますか？	4	5	4.5					
+7	I'll pick him up at 5.	5時に彼を迎えに行きます。	5	5	5					
+8	It's so lovely a day.	一日はとても素敵です。	3	3	3					
+9	You've just been down in the dumps.	あなたはちょうどダンプでダウンしています。	2	4	3					
+10	Choose one from among these.	これらの中から1つを選択してください。	5	5	5					
+11	He loves no one but her.	彼は彼女以外は誰も愛していません。	5	5	5					
+12	I study English every day.	私は毎日英語を勉強しています。	5	5	5					
+13	I like spring the best of the seasons.	私は春の最高の季節が好きです。	2	2	2					
+14	You can't have lost your coat in the house.	家でコートを失うことはできません。	2	2	2					
+15	There are some oranges on the tree.	木にいくつかのオレンジがあります。	4	5	4.5					
+16	She died of shock.	彼女はショックで亡くなりました。	4	5	4.5					
+17	Why did she come home early?	なぜ彼女は早く帰宅したのですか？	5	5	5					
+18	I like French food very much.	私はフランス料理がとても好きです。	5	5	5					
+19	We went to Boston, where we stayed a week.	ボストンに行き、そこで1週間滞在しました。	5	4	4.5					
+20	How's the weather there?	天気はどうですか？	5	4	4.5					
+21	The new plan will call for a lot of money.	新しい計画では多くのお金が必要になります。	4	5	4.5					
+22	He was lost to history.	彼は歴史に迷った。	4	4	4					
+23	She was the last woman that I expected to see at the party.	彼女は私がパーティーで見ることを期待していた最後の女性でした。	3	4	3.5					
+24	I couldn't get him on the phone.	私は彼を電話で連れて行くことができませんでした。	4	3	3.5					
+25	You must make up for lost time.	失われた時間を補う必要があります。	4	5	4.5					
+26	The matter has not been settled yet.	問題はまだ解決されていません。	5	5	5					
+27	What time does the shuttle bus leave for the airport?	空港のシャトルバスは何時ですか？	4	4	4					
+28	I have some good news for you.	私はあなたにいくつかの良いニュースがあります。	3	5	4					
+29	She wants to keep a cat.	彼女は猫を飼いたいと思っています。	5	5	5					
+30	The Hill is bare of trees.	丘は木々がむき出しです。	5	5	5					
+31	It was Sunday yesterday.	昨日は日曜日でした。	5	5	5					
+32	I have many books.	私はたくさんの本を持っています。	5	5	5					
+33	And I will raise it again in three days.	そして、私は3日後にそれを再び育てます。	4	4	4					
+34	I am tired from a long walk.	私は長い散歩に疲れています。	4	5	4.5					
+35	It is a good idea to read this book.	この本を読むのは良い考えです。	5	5	5					
+36	He promised that he would write to me once in a while.	彼はたまに私に手紙を書くと約束した。	4	5	4.5					
+37	I'll give you a call in the morning.	朝に電話します。	4	5	4.5					
+38	Wash your hands before meals.	食事の前に手を洗ってください。	5	5	5					
+39	Tell me about your program for the future.	将来のプログラムについて教えてください。	4	5	4.5					
+40	He applied himself to the study of music.	彼は音楽の研究に自分自身を適用しました。	3	4	3.5					
+41	I lay down to rest.	私は休むために横たわりました。	4	5	4.5					
+42	Where is the information counter?	情報カウンターはどこにありますか？	4	5	4.5					
+43	I study very little.	私はほとんど勉強していません。	5	5	5					
+44	Thank you for coming.	来てくれてありがとう。	4	5	4.5					
+45	Why don't you give me a ride?	乗ってみませんか？	4	3	3.5					
+46	I was in London most of the summer.	私は夏のほとんどロンドンにいました。	5	5	5					
+47	What was that noise?	そのノイズは何でしたか？	4	5	4.5					
+48	Please give me this book.	この本をください。	5	5	5					
+49	I'm afraid she will fail.	私は彼女が失敗するのではないかと心配しています。	4	5	4.5					
+50	I found it impossible to cross the road.	道を渡ることは不可能だと感じました。	5	5	5					
+51	The day will come someday when the business will succeed.	いつかビジネスが成功する日が来るでしょう。	5	5	5					
+52	I have done much writing this week.	今週はたくさんの執筆をしました。	5	5	5					
+53	He spends a great deal of money on books.	彼は本に多額のお金を費やしています。	5	5	5					
+54	From what time to what time is your office open?	あなたのオフィスは何時から何時まで開いていますか？	5	5	5					
+55	Is this your first visit here?	これはあなたの最初の訪問ですか？	4	5	4.5					
+56	New year's day is close at hand.	元旦は近いです。	4	5	4.5					
+57	That applies to him too.	それは彼にも当てはまります。	5	5	5					
+58	I make it a rule to get up at six every morning.	私は毎朝6時に起きることをルールにします。	4	5	4.5					
+59	He has been to London three times.	彼はロンドンに3回行ったことがあります。	5	5	5					
+60	He is my best friend.	彼は私の一番の親友です。	5	5	5					
+61	Not anybody likes this book.	この本が好きではありません。	4	5	4.5					
+62	I am pleased at your success.	私はあなたの成功に満足しています。	4	5	4.5					
+63	Do you? Why?	あなたは？なんで？	4	5	4.5					
+64	I wish this job was over.	この仕事が終わったらいいのにと思います。	4	5	4.5					
+65	He will be back in a couple of days.	彼は数日後に戻ってきます。	5	5	5					
+66	They are very thick with our family.	彼らは私たちの家族と非常に厚いです。	2	3	2.5					
+67	How can you break the news to her?	どうすれば彼女にニュースを破ることができますか？	2	3	2.5					
+68	Don't run so fast.	それほど速く走らないでください。	4	5	4.5					
+69	You must not idle away.	アイドル状態ではありません。	3	4	3.5					
+70	Will you tell me how to play the guitar?	ギターの弾き方を教えてください。	5	5	5					
+71	I can't leave work until five.	5まで仕事を離れることはできません。	4	4	4					
+72	Sometimes the game lasted all day.	時々ゲームは一日中続きました。	3	5	4					
+73	As many men as came were caught.	来たのと同じくらい多くの男性が捕まった。	4	5	4.5					
+74	The important thing is to call the police at once.	重要なことは、すぐに警察に電話することです。	4	5	4.5					
+75	The problem was where to eat lunch.	問題は昼食をどこで食べるかでした。	5	5	5					
+76	I suggested that we go fishing.	私たちは釣りに行くことを提案しました。	5	5	5					
+77	You had better get away from here at once.	すぐにここから逃げた方が良いです。	5	5	5					
+78	I have no friend to talk with.	私には話す友達がいません。	5	5	5					
+79	He looks tired.	彼は疲れているように見えます。	4	5	4.5					
+80	Your behavior is too extraordinary.	あなたの行動はあまりにも並外れています。	4	5	4.5					
+81	When night came on, we returned home.	夜が来たとき、私たちは家に戻りました。	4	5	4.5					
+82	Do you take me for a fool?	あなたは私を馬鹿に連れて行きますか？	3	5	4					
+83	I'm sure she will come.	彼女が来ると確信しています。	4	5	4.5					
+84	He's sympathetic to our plan.	彼は私たちの計画に同情しています。	4	5	4.5					
+85	The tower can be seen from here.	塔はここから見ることができます。	4	5	4.5					
+86	Cats can see in the dark.	猫は暗闇の中で見ることができます。	3	4	3.5					
+87	He has knowledge and experience as well.	彼には知識と経験もあります。	4	5	4.5					
+88	I just went into debt.	私はちょうど借金をしました。	4	5	4.5					
+89	I bought a cat at that shop.	その店で猫を買いました。	5	5	5					
+90	He arrived the day she left.	彼は彼女が去った日に到着した。	5	5	5					
+91	His name has slipped my mind.	彼の名前は私の心を滑らせました。	3	4	3.5					
+92	Tears filled her eyes.	涙が彼女の目を満たした。	4	5	4.5					
+93	He is too ready to speak.	彼はあまりにも準備ができています。	2	3	2.5					
+94	I caught on to what the teacher was explaining.	私は先生が説明していることに気づきました。	4	5	4.5					
+95	He tried to speak by word or gesture.	彼は言葉やジェスチャーで話そうとしました。	5	5	5					
+96	I have lived here for a long time.	私は長い間ここに住んでいます。	5	5	5					
+97	The student failed to account for the mistake.	学生は間違いを説明できませんでした。	5	5	5					
+98	He wanted to be rich.	彼は金持ちになりたかった。	5	5	5					
+99	Leaves fell down every now and then.	葉は時々落ちました。	4	5	4.5					
+100	They had once helped each other.	彼らはかつてお互いを助けていました。	4	5	4.5					
+1	Show your own business.	あなた自身のビジネスを示してください。	4	5	4.5					
+2	He lived a hard life.	彼はつらい人生を送った。	5	5	5					
+3	No . I'm sorry, I've got to go back early.	いいえ 。すみません、早く帰らなきゃ。	4	5	4.5					
+4	She wrote to me to come at once.	彼女はすぐに来るように私に手紙を書いた。	4	5	4.5					
+5	I can't swim at all.	全然泳げない。	4	4	4					
+6	Is there any hope of his success?	彼の成功の希望はありますか？	4	5	4.5					
+7	I'll pick him up at 5.	5時に迎えに行きます。	5	5	5					
+8	It's so lovely a day.	とても素敵な一日です。	5	5	5					
+9	You've just been down in the dumps.	あなたはちょうどダンプに落ちています。	3	4	3.5					
+10	Choose one from among these.	これらの中から1つを選択してください。	5	5	5					
+11	He loves no one but her.	彼は彼女以外の誰も愛していない。	5	5	5					
+12	I study English every day.	私は毎日英語を勉強しています。	5	5	5					
+13	I like spring the best of the seasons.	私は春が一番好きです。	5	4	4.5					
+14	You can't have lost your coat in the house.	あなたは家の中であなたのコートを失ったことはできません。	1	2	1.5					
+15	There are some oranges on the tree.	木の上にいくつかのオレンジがあります。	4	4	4					
+16	She died of shock.	彼女はショックで亡くなりました。	4	5	4.5					
+17	Why did she come home early?	なぜ彼女は早く帰宅したのですか？	5	5	5					
+18	I like French food very much.	私はフランス料理がとても好きです。	5	5	5					
+19	We went to Boston, where we stayed a week.	私たちはボストンに行き、そこで一週間滞在しました。	5	5	5					
+20	How's the weather there?	天気はどうですか？	5	4	4.5					
+21	The new plan will call for a lot of money.	新しい計画はたくさんのお金を必要とします。	4	5	4.5					
+22	He was lost to history.	彼は歴史に迷いました。	4	4	4					
+23	She was the last woman that I expected to see at the party.	彼女は私がパーティーで会うことを期待した最後の女性でした。	3	4	3.5					
+24	I couldn't get him on the phone.	私は彼に電話をかけることができなかった。	4	5	4.5					
+25	You must make up for lost time.	あなたは失われた時間を埋め合わせなければなりません。	4	5	4.5					
+26	The matter has not been settled yet.	問題はまだ解決されていません。	5	5	5					
+27	What time does the shuttle bus leave for the airport?	シャトルバスは何時に空港に向けて出発しますか？	4	5	4.5					
+28	I have some good news for you.	良い知らせがあります。	5	5	5					
+29	She wants to keep a cat.	彼女は猫を飼いたい。	5	5	5					
+30	The Hill is bare of trees.	丘は木々が生い茂っています。	5	4	4.5					
+31	It was Sunday yesterday.	昨日は日曜日でした。	5	5	5					
+32	I have many books.	私はたくさんの本を持っています。	5	5	5					
+33	And I will raise it again in three days.	そして、3日後にまた上げます。	4	5	4.5					
+34	I am tired from a long walk.	長い散歩で疲れました。	5	5	5					
+35	It is a good idea to read this book.	この本を読むのは良い考えです。	5	5	5					
+36	He promised that he would write to me once in a while.	彼は時々私に手紙を書くと約束した。	4	5	4.5					
+37	I'll give you a call in the morning.	午前中に電話します。	4	5	4.5					
+38	Wash your hands before meals.	食事の前に手を洗ってください。	5	5	5					
+39	Tell me about your program for the future.	今後のプログラムについて教えてください。	5	5	5					
+40	He applied himself to the study of music.	彼は音楽の研究に専念した。	5	5	5					
+41	I lay down to rest.	私は横になって休んだ。	5	5	5					
+42	Where is the information counter?	インフォメーションカウンターはどこですか？	5	5	5					
+43	I study very little.	私はほとんど勉強しません。	5	5	5					
+44	Thank you for coming.	来てくれてありがとう。	4	5	4.5					
+45	Why don't you give me a ride?	乗ってみませんか？	4	3	3.5					
+46	I was in London most of the summer.	私は夏のほとんどロンドンにいました。	5	5	5					
+47	What was that noise?	そのノイズは何でしたか？	4	5	4.5					
+48	Please give me this book.	この本をください。	5	5	5					
+49	I'm afraid she will fail.	彼女は失敗するのではないかと心配しています。	4	5	4.5					
+50	I found it impossible to cross the road.	道を渡ることは不可能だと思いました。	4	5	4.5					
+51	The day will come someday when the business will succeed.	いつかビジネスが成功する日が来るでしょう。	5	5	5					
+52	I have done much writing this week.	今週はたくさんの書き込みをしました。	4	5	4.5					
+53	He spends a great deal of money on books.	彼は本に多額のお金を費やしている。	5	5	5					
+54	From what time to what time is your office open?	あなたのオフィスは何時から何時まで開いていますか？	5	5	5					
+55	Is this your first visit here?	ここへの初めての訪問ですか？	4	5	4.5					
+56	New year's day is close at hand.	新年の日が近づいています。	4	5	4.5					
+57	That applies to him too.	それは彼にも当てはまります。	5	5	5					
+58	I make it a rule to get up at six every morning.	私は毎朝6時に起きるのがルールです。	5	5	5					
+59	He has been to London three times.	彼はロンドンに3回行ったことがあります。	5	5	5					
+60	He is my best friend.	彼は私の一番の親友です。	5	5	5					
+61	Not anybody likes this book.	この本が好きな人はいません。	5	5	5					
+62	I am pleased at your success.	私はあなたの成功に満足しています。	4	5	4.5					
+63	Do you? Why?	あなたは？なんで？	4	5	4.5					
+64	I wish this job was over.	この仕事が終わったらいいのに。	4	5	4.5					
+65	He will be back in a couple of days.	彼は数日後に戻ってきます。	5	5	5					
+66	They are very thick with our family.	彼らは私たちの家族と非常に厚いです。	2	3	2.5					
+67	How can you break the news to her?	どうすれば彼女にニュースを伝えることができますか？	3	4	3.5					
+68	Don't run so fast.	そんなに速く走らないでください。	5	5	5					
+69	You must not idle away.	遊んではいけません。	3	4	3.5					
+70	Will you tell me how to play the guitar?	ギターの弾き方を教えてください。	5	5	5					
+71	I can't leave work until five.	５時まで仕事を辞められない。	4	4	4					
+72	Sometimes the game lasted all day.	時々ゲームは一日中続きました。	3	5	4					
+73	As many men as came were caught.	来たのと同じくらい多くの男性が捕らえられました。	4	5	4.5					
+74	The important thing is to call the police at once.	重要なのは、すぐに警察に電話することです。	5	5	5					
+75	The problem was where to eat lunch.	問題はどこで昼食を食べるかでした。	5	5	5					
+76	I suggested that we go fishing.	釣りに行くことを提案しました。	5	5	5					
+77	You had better get away from here at once.	すぐにここから離れた方がいいです。	5	5	5					
+78	I have no friend to talk with.	話をする友達がいません。	5	5	5					
+79	He looks tired.	彼は疲れているようだ。	5	5	5					
+80	Your behavior is too extraordinary.	あなたの行動は異常すぎます。	5	5	5					
+81	When night came on, we returned home.	夜が来ると、私たちは家に帰りました。	4	5	4.5					
+82	Do you take me for a fool?	あなたは私をばかだと思いますか？	4	5	4.5					
+83	I'm sure she will come.	彼女が来ると確信しています。	5	5	5					
+84	He's sympathetic to our plan.	彼は私たちの計画に同情しています。	4	5	4.5					
+85	The tower can be seen from here.	ここから塔が見えます。	5	5	5					
+86	Cats can see in the dark.	猫は暗闇の中で見ることができます。	3	4	3.5					
+87	He has knowledge and experience as well.	彼は知識と経験も持っています。	4	5	4.5					
+88	I just went into debt.	私はちょうど借金をしました。	4	5	4.5					
+89	I bought a cat at that shop.	あの店で猫を買いました。	5	5	5					
+90	He arrived the day she left.	彼は彼女が去った日に到着した。	5	5	5					
+91	His name has slipped my mind.	彼の名前は私の心を滑らせた。	3	4	3.5					
+92	Tears filled her eyes.	涙が彼女の目を満たしました。	4	5	4.5					
+93	He is too ready to speak.	彼は話す準備ができすぎています。	3	3	3					
+94	I caught on to what the teacher was explaining.	私は先生が説明していることに気づきました。	4	5	4.5					
+95	He tried to speak by word or gesture.	彼は言葉やジェスチャーで話そうとした。	5	5	5					
+96	I have lived here for a long time.	私はここに長い間住んでいます。	5	5	5					
+97	The student failed to account for the mistake.	学生は間違いを説明できなかった。	5	5	5					
+98	He wanted to be rich.	彼は金持ちになりたかった。	5	5	5					
+99	Leaves fell down every now and then.	葉は時々落ちました。	4	5	4.5					
+100	They had once helped each other.	彼らはかつて互いに助け合っていました。	5	5	5					
+1	Show your own business.	自分の仕事を見せる。	3	4	3.5					
+2	He lived a hard life.	彼は大変な人生を歩んできた。	5	5	5					
+3	No . I'm sorry, I've got to go back early.	いいえ、すみません、私は早く戻らなければなりません。	4	5	4.5					
+4	She wrote to me to come at once.	彼女はすぐに来るようにと私に手紙を書いた。	5	5	5					
+5	I can't swim at all.	私は全く泳げません。	5	5	5					
+6	Is there any hope of his success?	彼の成功の望みはあるのでしょうか？	5	5	5					
+7	I'll pick him up at 5.	5時に迎えに行く	5	5	5					
+8	It's so lovely a day.	今日はとてもいい天気ですね。	5	4	4.5					
+9	You've just been down in the dumps.	君はちょうど落ち込んでいたんだよ。	4	5	4.5					
+10	Choose one from among these.	この中から一つ選んでください。	5	5	5					
+11	He loves no one but her.	彼は彼女以外誰も愛していない。	5	5	5					
+12	I study English every day.	私は毎日英語を勉強しています。	5	5	5					
+13	I like spring the best of the seasons.	私は季節の中で春が一番好きです。	5	5	5					
+14	You can't have lost your coat in the house.	家の中でコートをなくしたなんてことはないでしょう。	5	5	5					
+15	There are some oranges on the tree.	木にみかんがなっている。	5	5	5					
+16	She died of shock.	彼女はショック死しました。	5	5	5					
+17	Why did she come home early?	なぜ彼女は早く帰ってきたのですか？	4	5	4.5					
+18	I like French food very much.	私はフランス料理がとても好きです。	5	5	5					
+19	We went to Boston, where we stayed a week.	私達はボストンに行き、一週間滞在しました。	5	5	5					
+20	How's the weather there?	そこの天気はどうですか？	5	5	5					
+21	The new plan will call for a lot of money.	新しい計画では多額の資金を必要とする。	5	5	5					
+22	He was lost to history.	彼は歴史の中で失われた。	5	5	5					
+23	She was the last woman that I expected to see at the party.	彼女は私がパーティーで見ることを期待していた最後の女性だった。	3	4	3.5					
+24	I couldn't get him on the phone.	私は彼を電話で呼び出すことができませんでした。	5	5	5					
+25	You must make up for lost time.	あなたは失われた時間を取り戻さなければなりません。	5	5	5					
+26	The matter has not been settled yet.	この問題はまだ決着していません。	5	5	5					
+27	What time does the shuttle bus leave for the airport?	シャトルバスは何時に空港に出発するのですか？	5	5	5					
+28	I have some good news for you.	いい知らせがあるんだ。	5	5	5					
+29	She wants to keep a cat.	彼女は猫を飼いたいと言っている。	5	4	4.5					
+30	The Hill is bare of trees.	The Hillは木がむき出しになっています。	4	5	4.5					
+31	It was Sunday yesterday.	昨日は日曜日でした。	5	5	5					
+32	I have many books.	私はたくさんの本を持っています。	5	5	5					
+33	And I will raise it again in three days.	そして、3日後にまた上げる予定です。	5	5	5					
+34	I am tired from a long walk.	長い散歩で疲れています。	5	5	5					
+35	It is a good idea to read this book.	この本を読むのは良い考えです。	5	5	5					
+36	He promised that he would write to me once in a while.	たまには手紙を書くと約束した。	5	4	4.5					
+37	I'll give you a call in the morning.	朝になったら電話するよ。	5	5	5					
+38	Wash your hands before meals.	食事の前に手を洗いましょう。	5	5	5					
+39	Tell me about your program for the future.	あなたの将来のプログラムについて教えてください。	5	5	5					
+40	He applied himself to the study of music.	彼は音楽の勉強に専念した。	5	5	5					
+41	I lay down to rest.	私は休むために横になった。	4	5	4.5					
+42	Where is the information counter?	情報カウンターはどこですか？	4	5	4.5					
+43	I study very little.	私はほとんど勉強していません。	5	5	5					
+44	Thank you for coming.	来てくださってありがとうございます。	5	5	5					
+45	Why don't you give me a ride?	乗せて行ってくれませんか。	5	5	5					
+46	I was in London most of the summer.	私は夏の間ほとんどロンドンにいた。	5	5	5					
+47	What was that noise?	あの音は何ですか？	5	5	5					
+48	Please give me this book.	この本を私にください。	5	5	5					
+49	I'm afraid she will fail.	私は彼女が失敗するのを恐れている。	5	5	5					
+50	I found it impossible to cross the road.	私は道路を渡るのが不可能だと思った。	4	5	4.5					
+51	The day will come someday when the business will succeed.	いつかその事業が成功する日が来るだろう。	5	5	5					
+52	I have done much writing this week.	私は今週たくさん書き物をした。	5	5	5					
+53	He spends a great deal of money on books.	彼は本に大変な金をかけている。	3	5	4					
+54	From what time to what time is your office open?	あなたのオフィスは何時から何時まで開いているのですか。	5	5	5					
+55	Is this your first visit here?	あなたはここに来るのは初めてですか。	5	5	5					
+56	New year's day is close at hand.	正月はもうすぐです。	5	5	5					
+57	That applies to him too.	それは彼にもあてはまる。	5	5	5					
+58	I make it a rule to get up at six every morning.	私は毎朝6時に起きることにしている。	5	5	5					
+59	He has been to London three times.	彼はロンドンに3回行ったことがある。	5	5	5					
+60	He is my best friend.	彼は私の親友です。	4	5	4.5					
+61	Not anybody likes this book.	この本が好きな人はいないよ。	5	5	5					
+62	I am pleased at your success.	君の成功を喜んでいる。	4	5	4.5					
+63	Do you? Why?	そうかな？どうして？	5	5	5					
+64	I wish this job was over.	この仕事が終わればいいのに	4	5	4.5					
+65	He will be back in a couple of days.	彼は2、3日で戻ってきますよ。	5	5	5					
+66	They are very thick with our family.	私たち家族にも厚かましい。	2	3	2.5					
+67	How can you break the news to her?	どうやって彼女に知らせたらいいんだ？	5	5	5					
+68	Don't run so fast.	そんなに早く走らないで。	5	5	5					
+69	You must not idle away.	怠けてはいけないよ。	5	5	5					
+70	Will you tell me how to play the guitar?	ギターの弾き方を教えてくれませんか。	5	5	5					
+71	I can't leave work until five.	私は5時まで仕事を終えることが出来ない。	5	5	5					
+72	Sometimes the game lasted all day.	時々ゲームは一日中続いた。	3	5	4					
+73	As many men as came were caught.	来たのと同じ数の男が捕まった。	4	5	4.5					
+74	The important thing is to call the police at once.	大事なことはすぐに警察に電話することだ。	4	5	4.5					
+75	The problem was where to eat lunch.	問題は昼食をどこで食べるかであった。	5	5	5					
+76	I suggested that we go fishing.	私は釣りに行くことを提案した。	5	5	5					
+77	You had better get away from here at once.	君はすぐにここから逃げた方が良いよ。	5	5	5					
+78	I have no friend to talk with.	私には話をする友達がいないのです。	5	5	5					
+79	He looks tired.	彼は疲れているようだ。	5	5	5					
+80	Your behavior is too extraordinary.	あなたの行動はあまりにも異常です。	5	5	5					
+81	When night came on, we returned home.	夜になってから、私達は家に戻りました。	5	5	5					
+82	Do you take me for a fool?	私を馬鹿にしているのですか？	5	5	5					
+83	I'm sure she will come.	彼女はきっと来るよ。	5	5	5					
+84	He's sympathetic to our plan.	彼は我々の計画に同情的だ。	4	5	4.5					
+85	The tower can be seen from here.	塔はここから見える。	4	5	4.5					
+86	Cats can see in the dark.	猫は暗闇の中でも目が見える。	5	5	5					
+87	He has knowledge and experience as well.	彼は知識と経験も持っている。	4	5	4.5					
+88	I just went into debt.	私はちょうど借金をしました。	4	5	4.5					
+89	I bought a cat at that shop.	その店で猫を買った。	5	5	5					
+90	He arrived the day she left.	彼は彼女が去った日に到着した。	5	5	5					
+91	His name has slipped my mind.	彼の名前は、私の頭から抜け落ちてしまった。	5	5	5					
+92	Tears filled her eyes.	涙が彼女の目を満たした。	4	5	4.5					
+93	He is too ready to speak.	彼は話すにはあまりに準備ができている。	3	3	3					
+94	I caught on to what the teacher was explaining.	私は先生が説明していることを聞き取った。	5	5	5					
+95	He tried to speak by word or gesture.	彼は言葉やジェスチャーで話そうとした。	5	5	5					
+96	I have lived here for a long time.	私はここに長い間住んでいる。	5	5	5					
+97	The student failed to account for the mistake.	その学生は間違いを説明することができなかった。	5	5	5					
+98	He wanted to be rich.	彼は金持ちになりたかった。	5	5	5					
+99	Leaves fell down every now and then.	葉っぱは時々落ちていた。	4	5	4.5					
+100	They had once helped each other.	彼らはかつて互いに助け合っていた。	5	5	5					
