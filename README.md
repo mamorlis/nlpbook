@@ -17,6 +17,11 @@
 ## 第4章
 
 - [fairseq によるニューラル機械翻訳演習](https://colab.research.google.com/drive/1_aQyvjBgd7HPm0zv-U0ndYLLmzs7plCt)
+- [OpenNMT-py によるニューラル機械翻訳演習](https://colab.research.google.com/drive/1D-GVWcqZ3WhH_oxgGnXQowKaTCUdBFuG)
+
+## 第5章
+
+書籍に載せている演習例は楽天データセットによるものなので配布はできませんが、配布可能なデータセットでのアノテーション例（Google Spreadsheet）を公開予定です。
 
 # 練習問題
 
@@ -24,5 +29,5 @@
 
 # リンク
 
-[Amazon のページ](https://amzn.to/3K0j914) で予約できます。
-5月24日から順次配送予定だそうです。Kindle 版も出版予定です。
+[Amazon のページ](https://amzn.to/3K0j914) で購入できます（書籍版、Kindle 版ともにあります）。
+EPUB/PDF 版は[技術評論社のページ](https://gihyo.jp/dp/ebook/2024/978-4-297-13864-6)から購入できます。
