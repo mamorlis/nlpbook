@@ -33,3 +33,15 @@
 - （誤）: doccanno
 - （正）: doccano
 - （メモ）: タイポでした（アノテーションツールの WebAnno と間違えてました）。森岡靖太さん、ありがとうございました。 
+
+## 関連論文
+
+### p.211
+- （誤）: 7. Brown et al（2020）「Language Models are Few-Shot Learners」
+- （正）: 7. Brown et al（2020）「Language Models are Few-Shot Learners」**, NeurIPS**
+- （メモ）: NeurIPS 採択版がありました（GPT-2 の論文 "Language Models are Unsupervised Multitask Learners" と間違えてしまいました）。すみません。柴田知秀さん、ありがとうございました。
+
+### p.211
+- （誤）: ちなみに **この** 論文、
+- （正）: ちなみに **GPT-2 の** 論文、
+- （メモ）: 同上です。柴田知秀さん、ありがとうございました。
