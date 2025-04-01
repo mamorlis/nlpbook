@@ -21,9 +21,9 @@
 
 ## 第4章
 
-- [fairseq によるニューラル機械翻訳演習](https://colab.research.google.com/drive/1_aQyvjBgd7HPm0zv-U0ndYLLmzs7plCt)
 - [OpenNMT-py によるニューラル機械翻訳演習](https://colab.research.google.com/drive/1D-GVWcqZ3WhH_oxgGnXQowKaTCUdBFuG)
-  - fairseq を使った方を主にメンテナンスしているので、こちらは動かなくなっている可能性があります。
+  - 最終確認 2025/04/01
+  - fairseq が2022年で開発停止しているので、現在 OpenNMT-py 版しか Google Colab で動かすことができなくなりました。
 
 ## 第5章
 
