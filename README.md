@@ -8,9 +8,11 @@
 ## 第2章
 
 - [日本語 BERT モデルによる文書分類](https://colab.research.google.com/drive/17ePJgkOvxzm3DIEKfuuDWpCenqaXOpsb)
+  - 最終確認 2025/04/01
+  - 各自で作成したデータセットで演習いただくつもりでしたが、サンプルデータをダウンロードするように変更しました。
 - [機械翻訳の品質推定](https://colab.research.google.com/drive/1sxMCQCY8LQU9VobYspP4GO4WIote426w)
-  - early stopping で訓練が途中で終わることがあります。
-  - 現在配布しているデータセットだときれいに訓練できないことがあるので、きれいに訓練できるデータセットに差し替え予定です。
+  - 最終確認 2025/04/01
+  - 各自で作成したデータセットで演習いただくつもりでしたが、サンプルデータをダウンロードするように変更しました。
 
 ## 第3章
 
