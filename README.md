@@ -19,13 +19,11 @@
 
 ## 第3章
 
-- Fast GECToR と cLang-8 による英語誤り検出・訂正
-  - [（1）データの準備](https://colab.research.google.com/drive/1AlRWUL5bz4NLjhvjm25bsjj7_9LDDm9R)（CPU で実行）
-  - [（2）訓練と評価](https://colab.research.google.com/drive/19NSqluC9GO82hlJMSO3u38DGwZudizil)（GPU で実行）
-  - 最終確認 2026/10/20
-  - 無料版の Google Colab だと GPU の無料枠を使い切ってしまうので、データの準備（CPU）と訓練・評価（GPU）の2つのノートブックに分けました。（1）で作ったデータは Google Drive に保存し、（2）で読み込みます。Lang-8 のデータ（`lang-8-20111007-2.0.zip`）は各自で申請して入手し、Google Drive に置いてください。
-  - 訓練データを10万文、2エポックに減らして、T4 GPU で30分ほどで訓練が終わるようにしました。cLang-8 の単語分割も使う文だけにして、データの準備にかかる時間を短くしています。
-  - Fast GECToR は2023年以降更新されていないため、ノートブックの中で uv を使って Python 3.10 の環境を作っています。また、訓練後に ERRANT で評価するようにしました。
+- [Fast GECToR と W&I による英語誤り検出・訂正](https://colab.research.google.com/drive/19NSqluC9GO82hlJMSO3u38DGwZudizil)
+  - 最終確認 2026/10/21
+  - データを cLang-8 から、BEA-2019 共有タスクで公開された W&I+LOCNESS v2.1 に変更しました。W&I は非営利の研究・教育目的なら申請なしでダウンロードできるので、Lang-8 のデータの申請や cLang-8 の作成が不要になり、1つのノートブックで最後まで実行できます。
+  - W&I の訓練データ（約3.4万文）で5エポック訓練し、T4 GPU で30分ほどで終わります。テストデータの正解は公開されていないので、開発データを半分に分けて開発データとテストデータにしています。ERRANT で評価すると F0.5 は0.26程度です。
+  - Fast GECToR は2023年以降更新されていないため、ノートブックの中で uv を使って Python 3.10 の環境を作っています。
 
 ## 第4章
 
