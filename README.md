@@ -21,9 +21,14 @@
 
 ## 第4章
 
-- [OpenNMT-py によるニューラル機械翻訳演習](https://colab.research.google.com/drive/1D-GVWcqZ3WhH_oxgGnXQowKaTCUdBFuG)
-  - 最終確認 2025/04/01
-  - fairseq が2022年で開発停止しているので、現在 OpenNMT-py 版しか Google Colab で動かすことができなくなりました。
+- [Eole によるニューラル機械翻訳演習](https://colab.research.google.com/drive/1dYI2McofLYgSEMdB6c3C2KB4eoaVMYA6)
+  - 最終確認 2026/10/20
+  - 書籍で紹介している OpenNMT-py は2024年の v3.5.1 で開発が止まっているので、後継の [Eole](https://github.com/eole-nlp/eole) を使う演習に変更しました。コマンド名（`onmt_train` → `eole train` など）と設定ファイルの書き方が少し違いますが、演習の内容は同じです。
+  - Google Colab の Python 3.13 では Eole の依存ライブラリがインストールできないため、ノートブックの中で uv を使って Python 3.12 の環境を作っています。
+- 旧版：[OpenNMT-py によるニューラル機械翻訳演習](https://colab.research.google.com/drive/1D-GVWcqZ3WhH_oxgGnXQowKaTCUdBFuG)
+  - 最終確認 2026/10/20
+  - 書籍に載せている OpenNMT-py（v3.5.1）のコマンドで演習したい場合はこちらを使ってください。Eole 版と同じく、uv で Python 3.12 の環境を作っています。
+  - fairseq は2022年で開発が止まっていて、Google Colab では動かせません。
 
 ## 第5章
 
