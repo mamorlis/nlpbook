@@ -18,8 +18,13 @@
 
 ## 第3章
 
-- [Fast GECToR と cLang-8 による英語誤り検出・訂正](https://colab.research.google.com/drive/19NSqluC9GO82hlJMSO3u38DGwZudizil)
-  - データの前処理に結構時間がかかり、無料版の Google Colab だと GPU の無料枠を使い切ってしまうようなので、データの前処理部分を別にやるよう Notebook を修正予定です。
+- Fast GECToR と cLang-8 による英語誤り検出・訂正
+  - [（1）データの準備](https://colab.research.google.com/drive/1AlRWUL5bz4NLjhvjm25bsjj7_9LDDm9R)（CPU で実行）
+  - [（2）訓練と評価](https://colab.research.google.com/drive/19NSqluC9GO82hlJMSO3u38DGwZudizil)（GPU で実行）
+  - 最終確認 2026/10/20
+  - 無料版の Google Colab だと GPU の無料枠を使い切ってしまうので、データの準備（CPU）と訓練・評価（GPU）の2つのノートブックに分けました。（1）で作ったデータは Google Drive に保存し、（2）で読み込みます。Lang-8 のデータ（`lang-8-20111007-2.0.zip`）は各自で申請して入手し、Google Drive に置いてください。
+  - 訓練データを10万文、2エポックに減らして、T4 GPU で30分ほどで訓練が終わるようにしました。cLang-8 の単語分割も使う文だけにして、データの準備にかかる時間を短くしています。
+  - Fast GECToR は2023年以降更新されていないため、ノートブックの中で uv を使って Python 3.10 の環境を作っています。また、訓練後に ERRANT で評価するようにしました。
 
 ## 第4章
 
