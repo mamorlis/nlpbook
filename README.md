@@ -29,7 +29,7 @@
 
 ## 第4章
 
-- [Eole によるニューラル機械翻訳演習](https://colab.research.google.com/drive/1dYI2McofLYgSEMdB6c3C2KB4eoaVMYA6)
+- [Eole による英日ニューラル機械翻訳演習](https://colab.research.google.com/drive/1dYI2McofLYgSEMdB6c3C2KB4eoaVMYA6)
   - 最終確認 2026/10/20
   - 書籍で紹介している OpenNMT-py は2024年の v3.5.1 で開発が止まっているので、後継の [Eole](https://github.com/eole-nlp/eole) を使う演習に変更しました。コマンド名（`onmt_train` → `eole train` など）と設定ファイルの書き方が少し違いますが、演習の内容は同じです。
   - Google Colab の Python 3.13 では Eole の依存ライブラリがインストールできないため、ノートブックの中で uv を使って Python 3.12 の環境を作っています。
