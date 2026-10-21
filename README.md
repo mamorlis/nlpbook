@@ -12,7 +12,7 @@
   - Transformers 5 で動くように更新しました。東北大の BERT モデルの名前が cl-tohoku から tohoku-nlp に変わったので、合わせて変更しています。
   - 各自で作成したデータセットで演習いただくつもりでしたが、サンプルデータをダウンロードするように変更しました。
   - サンプルデータを1,000件（TRUE と FALSE が500件ずつ）に増やし、すべてのデータを使うようにしました（以前は50件だけ使っていたため、ほとんど推定できていませんでした）。ラベルの比率を揃えて訓練・開発・テストデータに分割し、正解率に加えて F1 でも評価します。テストデータでの正解率・F1 は0.95〜0.97程度です。
-- [機械翻訳の品質推定](https://colab.research.google.com/drive/1sxMCQCY8LQU9VobYspP4GO4WIote426w)
+- [英日機械翻訳の品質推定](https://colab.research.google.com/drive/1sxMCQCY8LQU9VobYspP4GO4WIote426w)
   - 最終確認 2026/10/21
   - データを WMT21・WMT22 の品質推定タスクで公開された英日翻訳のデータ（人手評価のスコア付き、それぞれ1,000文）に変更しました。WMT21 のデータで訓練し、WMT22 のデータでテストします。
   - 2021年以降更新されていない TransQuest の代わりに、Transformers の `Trainer` で XLM-R をファインチューニングするようにしました（TransQuest の MonoTransQuest と同じ構成です）。WMT22 の公式の評価尺度である Kendall's tau でも評価します。
