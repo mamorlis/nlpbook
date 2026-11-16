@@ -42,7 +42,10 @@
 
 ### 第5章
 
-書籍に載せている演習例は楽天データセットによるものなので配布はできませんが、配布可能なデータセットでのアノテーション例（Google Spreadsheet）を公開予定です。
+- [フレーズ分類ラベルアノテーションと品質管理](notebooks/ch5_annotation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_annotation.ipynb)
+  - 最終確認 2026/11/16
+  - 書籍に載せている演習例は楽天データセットによるものなので配布はできませんが、配布可能な宿泊レビュー風のサンプルデータ（100件）を作成し、スプレッドシート用の [Excel ファイル](misc/phrase-annotation.xlsx)と Colab 演習用の [CSV ファイル](misc/phrase-annotation.csv)を公開しました。
+  - 2人の作業者による評価極性アノテーションから混同行列と Cohen の κ を計算し、不一致事例の分析・仕様書の改訂によって未知データでの一致率が向上するプロセスを体験できます。あわせて、3人以上の作業者に対する Fleiss の κ とクラウドソーシングでのスパマー検出、学習曲線や分類器の予測確率を用いたアノテーションミス検出も扱っています。
 
 ## 練習問題
 
