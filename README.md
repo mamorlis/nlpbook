@@ -1,16 +1,16 @@
 # 自然言語処理の教科書
 小町守「自然言語処理の教科書」（技術評論社）のサポートサイトです。
 
-# 演習
+## 演習
 
 第2章から5章までは演習があります。それぞれの章の演習の Google Colab のリンクです。
 
-## 第2章
+### 第2章
 
 - [日本語 BERT モデルによる文書分類](https://colab.research.google.com/drive/17ePJgkOvxzm3DIEKfuuDWpCenqaXOpsb)
   - 最終確認 2026/10/20
-  - Transformers 5 で動くように更新しました。東北大の BERT モデルの名前が cl-tohoku から tohoku-nlp に変わったので、合わせて変更しています。
-  - 各自で作成したデータセットで演習いただくつもりでしたが、サンプルデータをダウンロードするように変更しました。
+  - Transformers 5 で動くように更新しました。東北大の BERT モデルの名前が `cl-tohoku` から `tohoku-nlp` に変わったので、合わせて変更しています。
+  - 各自で作成したデータセットで演習いただくつもりでしたが、[サンプルデータ](misc/covid-annotation.csv)をダウンロードするように変更しました。
   - サンプルデータを1,000件（TRUE と FALSE が500件ずつ）に増やし、すべてのデータを使うようにしました（以前は50件だけ使っていたため、ほとんど推定できていませんでした）。ラベルの比率を揃えて訓練・開発・テストデータに分割し、正解率に加えて F1 でも評価します。テストデータでの正解率・F1 は0.95〜0.97程度です。
 - [英日機械翻訳の品質推定](https://colab.research.google.com/drive/1sxMCQCY8LQU9VobYspP4GO4WIote426w)
   - 最終確認 2026/10/21
@@ -18,39 +18,39 @@
   - 2021年以降更新されていない TransQuest の代わりに、Transformers の `Trainer` で XLM-R をファインチューニングするようにしました（TransQuest の MonoTransQuest と同じ構成です）。WMT22 の公式の評価尺度である Kendall's tau でも評価します。
   - 既存の品質推定モデル（COMET-QE）と比較するようにしました。英日のデータで訓練していない COMET-QE のほうが、800文でファインチューニングした XLM-R より人手評価との相関が高いことがわかります。
 
-## 第3章
+### 第3章
 
 - [Fast GECToR と W&I による英語誤り検出・訂正](https://colab.research.google.com/drive/19NSqluC9GO82hlJMSO3u38DGwZudizil)
   - 最終確認 2026/10/21
   - データを cLang-8 から、BEA-2019 共有タスクで公開された W&I+LOCNESS v2.1 に変更しました。W&I は非営利の研究・教育目的なら申請なしでダウンロードできるので、Lang-8 のデータの申請や cLang-8 の作成が不要になり、1つのノートブックで最後まで実行できます。
   - W&I の訓練データ（約3.4万文）で10エポック訓練し、T4 GPU で40分ほどで終わります。テストデータの正解は公開されていないので、開発データを半分に分けて開発データとテストデータにしています。
   - 学習率とエポック数を探索し、[GECToR の訓練ガイド](https://github.com/grammarly/gector/blob/master/docs/training_parameters.md)にならって最初の2エポックはエンコーダを固定して訓練する（`--cold_step_count 2`）ようにしました。Fast GECToR のこの機能にはバグがあるので、ノートブックの中でソースコードを1行修正しています。ERRANT で評価すると F0.5 は0.41程度です（最初の設定では0.26程度でした）。
-  - Fast GECToR は2023年以降更新されていないため、ノートブックの中で uv を使って Python 3.10 の環境を作っています。
+  - Fast GECToR は2023年以降更新されていないため、ノートブックの中で `uv` を使って Python 3.10 の環境を作っています。
 
-## 第4章
+### 第4章
 
 - [Eole による英日ニューラル機械翻訳演習](https://colab.research.google.com/drive/1dYI2McofLYgSEMdB6c3C2KB4eoaVMYA6)
-  - 最終確認 2026/10/20
+  - 最終確認 2026/10/21
   - 書籍で紹介している OpenNMT-py は2024年の v3.5.1 で開発が止まっているので、後継の [Eole](https://github.com/eole-nlp/eole) を使う演習に変更しました。コマンド名（`onmt_train` → `eole train` など）と設定ファイルの書き方が少し違いますが、演習の内容は同じです。
-  - Google Colab の Python 3.13 では Eole の依存ライブラリがインストールできないため、ノートブックの中で uv を使って Python 3.12 の環境を作っています。
+  - Google Colab の Python 3.13 では Eole の依存ライブラリがインストールできないため、ノートブックの中で `uv` を使って Python 3.12 の環境を作っています。
 - 旧版：[OpenNMT-py によるニューラル機械翻訳演習](https://colab.research.google.com/drive/1D-GVWcqZ3WhH_oxgGnXQowKaTCUdBFuG)
   - 最終確認 2026/10/20
-  - 書籍に載せている OpenNMT-py（v3.5.1）のコマンドで演習したい場合はこちらを使ってください。Eole 版と同じく、uv で Python 3.12 の環境を作っています。
-  - fairseq は2022年で開発が止まっていて、Google Colab では動かせません。
+  - 書籍に載せている OpenNMT-py（v3.5.1）のコマンドで演習したい場合はこちらを使ってください。Eole 版と同じく、`uv` で Python 3.12 の環境を作っています。
+  - `fairseq` は2022年で開発が止まっていて、Google Colab では動かせません。
 
-## 第5章
+### 第5章
 
 書籍に載せている演習例は楽天データセットによるものなので配布はできませんが、配布可能なデータセットでのアノテーション例（Google Spreadsheet）を公開予定です。
 
-# 練習問題
+## 練習問題
 
 第1章から第6章までは章末に練習問題があります。それぞれの章の練習問題の[回答例](exercise.md)を掲載します。
 
-# 正誤表
+## 正誤表
 
 [正誤表](errata.md)を掲載します。本に関する誤りを見つけた場合は教えていただけると嬉しいです。
 
-# リンク
+## リンク
 
 [Amazon のページ](https://amzn.to/3K0j914) で購入できます（書籍版、Kindle 版ともにあります）。
 EPUB/PDF 版は[技術評論社のページ](https://gihyo.jp/dp/ebook/2024/978-4-297-13864-6)から購入できます。
