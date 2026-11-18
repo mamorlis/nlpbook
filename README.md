@@ -5,7 +5,13 @@
 
 ## 演習
 
-第2章から5章までは演習があります。ノートブック名をクリックすると GitHub 上で閲覧でき、「Open in Colab」をクリックすると Google Colab で直接実行できます。
+第1章から5章までは演習があります。ノートブック名をクリックすると GitHub 上で閲覧でき、「Open in Colab」をクリックすると Google Colab で直接実行できます。
+
+### 第1章
+
+- [分類・生成タスクの評価尺度と性質](notebooks/ch1_evaluation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_evaluation.ipynb)
+  - 最終確認 2026/11/18
+  - 分類タスクの評価尺度（正解率・適合率・再現率・F値、不均衡データでの正解率の罠、Macro/Micro 平均）と生成タスクの評価尺度（BLEU の修正 n-gram 適合率と簡潔性ペナルティ）を定義式から実装し、`scikit-learn` や `sacrebleu` と一致することを確認します。言い換えや否定反転の例を通じて表層一致尺度の限界も体験できます（CPU のみ・数秒で実行できます）。
 
 ### 第2章
 
