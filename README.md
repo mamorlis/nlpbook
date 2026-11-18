@@ -28,6 +28,9 @@
 
 ### 第3章
 
+- [形態素解析・サブワード分割と固有表現認識（系列ラベリング）](notebooks/ch3_morphology_ner.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_morphology_ner.ipynb)
+  - 最終確認 2026/11/18
+  - `SudachiPy` の分割単位（短単位・中単位・長単位）の違い、`SentencePiece` によるサブワード分割と未知語への振る舞い、BIO タグと CRF による固有表現認識（素性テンプレートによる精度変化と遷移重みの確認）を体験できます（CPU のみ・十数秒で実行できます）。
 - [Fast GECToR と W&I による英語誤り検出・訂正](notebooks/ch3_gector.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_gector.ipynb)
   - 最終確認 2026/10/21
   - データを cLang-8 から、BEA-2019 共有タスクで公開された W&I+LOCNESS v2.1 に変更しました。W&I は非営利の研究・教育目的なら申請なしでダウンロードできるので、Lang-8 のデータの申請や cLang-8 の作成が不要になり、1つのノートブックで最後まで実行できます。
@@ -37,6 +40,9 @@
 
 ### 第4章
 
+- [文書要約のベースラインと ROUGE 評価](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
+  - 最終確認 2026/11/18
+  - ROUGE-1 / ROUGE-2 / ROUGE-L を定義式から実装し、抽出型要約の 3 手法（リード法・TF-IDF スコアリング・TextRank）を比較します。ニュース型（冒頭結論）と後半結論型での手法ごとの得意・不得意や、抽出型要約の限界を確認できます（CPU のみ・数秒で実行できます）。
 - [Eole による英日ニューラル機械翻訳演習](notebooks/ch4_eole.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_eole.ipynb)
   - 最終確認 2026/10/21
   - 書籍で紹介している OpenNMT-py は2024年の v3.5.1 で開発が止まっているので、後継の [Eole](https://github.com/eole-nlp/eole) を使う演習に変更しました。コマンド名（`onmt_train` → `eole train` など）と設定ファイルの書き方が少し違いますが、演習の内容は同じです。
