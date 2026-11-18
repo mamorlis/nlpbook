@@ -15,6 +15,9 @@
 
 ### 第2章
 
+- [評価極性辞書（否定・逆接ルール）と機械学習の比較](notebooks/ch2_sentiment_lexicon.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_sentiment_lexicon.ipynb)
+  - 最終確認 2026/11/18
+  - [サンプルデータ](misc/phrase-annotation.csv)（100件）を使い、極性辞書のみ・否定反転と逆接を考慮したヒューリスティクス・教師あり機械学習（Bag-of-n-grams + ロジスティック回帰）を比較します。少量データでの辞書の強みと、辞書にない表現での限界をエラー分析から確認できます（CPU のみ・数秒で実行できます）。
 - [TF-IDF と線形モデルによる文書分類ベースライン・エラー分析](notebooks/ch2_tfidf_baseline.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_tfidf_baseline.ipynb)
   - 最終確認 2026/11/18
   - [サンプルデータ](misc/covid-annotation.csv)を使い、TF-IDF + ロジスティック回帰で軽量ベースラインを構築します。予測に寄与している特徴量（重み）の可視化や、誤分類事例と `コメント` 列を照らし合わせたエラー分析を CPU のみ・数秒で体験できます。
@@ -23,6 +26,12 @@
   - Transformers 5 で動くように更新しました。東北大の BERT モデルの名前が `cl-tohoku` から `tohoku-nlp` に変わったので、合わせて変更しています。
   - 各自で作成したデータセットで演習いただくつもりでしたが、[サンプルデータ](misc/covid-annotation.csv)をダウンロードするように変更しました。
   - サンプルデータを1,000件（TRUE と FALSE が500件ずつ）に増やし、すべてのデータを使うようにしました（以前は50件だけ使っていたため、ほとんど推定できていませんでした）。ラベルの比率を揃えて訓練・開発・テストデータに分割し、正解率に加えて F1 でも評価します。テストデータでの正解率・F1 は0.95〜0.97程度です。
+- [多クラス分類と多ラベル分類（評価指標と共起）](notebooks/ch2_multilabel.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_multilabel.ipynb)
+  - 最終確認 2026/11/18
+  - 1 つの文書に複数カテゴリが同時に付きうる多ラベル分類を `MultiLabelBinarizer` と `OneVsRestClassifier` で実装し、Subset Accuracy（完全一致率）と Hamming Loss / Micro-F1 / Macro-F1 / Samples-F1 の違いや閾値調整を体験できます（CPU のみ・数秒で実行できます）。
+- [順序尺度の評価（QWK・Strict/Lenient・分類 vs 回帰）](notebooks/ch2_ordinal_qwk.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_ordinal_qwk.ipynb)
+  - 最終確認 2026/11/18
+  - 書籍 表 2.1（6 段階評価の混同行列）をヒートマップで可視化し、Strict / Lenient（±1）正解率および重みつきカッパ係数（QWK）を定義式から実装して `scikit-learn` と比較します。あわせて [サンプルデータ](misc/phrase-annotation.csv) の 5 段階スコアを用い、MSE 最小化の回帰モデルが平均値付近に予測を集中させてしまう「MSE の罠」を確認できます（CPU のみ・数秒で実行できます）。
 - [英日機械翻訳の品質推定](notebooks/ch2_qe.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_qe.ipynb)
   - 最終確認 2026/10/21
   - データを WMT21・WMT22 の品質推定タスクで公開された英日翻訳のデータ（人手評価のスコア付き、それぞれ1,000文）に変更しました。WMT21 のデータで訓練し、WMT22 のデータでテストします。
@@ -48,7 +57,7 @@
 
 - [文書要約のベースラインと ROUGE 評価](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
   - 最終確認 2026/11/18
-  - ROUGE-1 / ROUGE-2 / ROUGE-L を定義式から実装し、抽出型要約の 3 手法（リード法・TF-IDF スコアリング・TextRank）を比較します。ニュース型（冒頭結論）と後半結論型での手法ごとの得意・不得意や、抽出型要約の限界を確認できます（CPU のみ・数秒で実行できます）。
+  - ROUGE-1 / ROUGE-2 / ROUGE-L を定義式から実装し、抽出型要約の 3 手法（リード法・TextRank（単語共起ベース）・LexRank（TF-IDF コサイン類似度ベース））を比較します。ニュース型（冒頭結論）と後半結論型での手法ごとの得意・不得意や、抽出型要約の限界を確認できます（CPU のみ・数秒で実行できます）。
 - [対話システムの基礎（ルールベースと検索型）](notebooks/ch4_dialogue.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_dialogue.ipynb)
   - 最終確認 2026/11/18
   - ELIZA 風の正規表現・テンプレートによるルールベース対話と、TF-IDF コサイン類似度を用いた用例検索型対話を実装し、未知発話に対するフォールバック設計やキャラクター一貫性の違いを確認できます（CPU のみ・数秒で実行できます）。
@@ -70,6 +79,9 @@
   - 最終確認 2026/11/16
   - 書籍に載せている演習例は楽天データセットによるものなので配布はできませんが、配布可能な宿泊レビュー風のサンプルデータ（100件）を作成し、スプレッドシート用の [Excel ファイル](misc/phrase-annotation.xlsx)と Colab 演習用の [CSV ファイル](misc/phrase-annotation.csv)を公開しました。
   - 2人の作業者による評価極性アノテーションから混同行列と Cohen の κ を計算し、不一致事例の分析・仕様書の改訂によって未知データでの一致率が向上するプロセスを体験できます。あわせて、3人以上の作業者に対する Fleiss の κ とクラウドソーシングでのスパマー検出、学習曲線や分類器の予測確率を用いたアノテーションミス検出も扱っています。
+- [形態素解析のユーザ辞書作成と単体テスト](notebooks/ch5_dictionary.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_dictionary.ipynb)
+  - 最終確認 2026/11/18
+  - 書籍 5-3（辞書作成）に対応し、システム辞書だけでは分割・正規化がうまくいかない専門用語を `SudachiPy` のユーザ辞書 CSV（表層形・品詞・読み・正規化形）へ登録して `sudachipy ubuild` でコンパイルし、エラー記録と単体テストで動作を検証します（CPU のみ・十数秒で実行できます）。
 
 ## 練習問題
 
