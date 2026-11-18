@@ -9,9 +9,12 @@
 
 ### 第1章
 
-- [分類・生成タスクの評価尺度と性質](notebooks/ch1_evaluation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_evaluation.ipynb)
+- [分類タスクの評価尺度と閾値調整（Fβ・特異度・不均衡データ）](notebooks/ch1_evaluation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_evaluation.ipynb)
   - 最終確認 2026/11/18
-  - 分類タスクの評価尺度（正解率・適合率・再現率・F値、不均衡データでの正解率の罠、Macro/Micro 平均）と生成タスクの評価尺度（BLEU の修正 n-gram 適合率と簡潔性ペナルティ）を定義式から実装し、`scikit-learn` や `sacrebleu` と一致することを確認します。言い換えや否定反転の例を通じて表層一致尺度の限界も体験できます（CPU のみ・数秒で実行できます）。
+  - 正解率・適合率・再現率・特異度（偽陽性率）・F値（$F_{0.5}$ / $F_1$ / $F_2$）を定義式から実装して `scikit-learn` と比較し、再現率 0.90 制約を満たす閾値調整、不均衡データでの「正解率の罠」、多クラス分類の Macro / Micro 平均を体験できます（CPU のみ・数秒で実行できます）。
+- [自然言語処理システムの開発サイクル（文分割・データ分割・計算量）](notebooks/ch1_design_cycle.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_design_cycle.ipynb)
+  - 最終確認 2026/11/18
+  - [サンプルデータ](misc/covid-annotation.csv)を使い、素朴な句点文分割が破綻するケース（「モーニング娘。」や括弧内句点）への対処、小さな評価データでハイパーパラメータを選び続けることによる過大評価の実験、および $O(1)$・$O(n)$・$O(n^2)$（ハッシュ探索・線形探索・全対計算）の計算量スケーリング実測を CPU のみ・数秒で体験できます。
 
 ### 第2章
 
@@ -21,6 +24,9 @@
 - [TF-IDF と線形モデルによる文書分類ベースライン・エラー分析](notebooks/ch2_tfidf_baseline.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_tfidf_baseline.ipynb)
   - 最終確認 2026/11/18
   - [サンプルデータ](misc/covid-annotation.csv)を使い、TF-IDF + ロジスティック回帰で軽量ベースラインを構築します。予測に寄与している特徴量（重み）の可視化や、誤分類事例と `コメント` 列を照らし合わせたエラー分析を CPU のみ・数秒で体験できます。
+- [SVM カーネル（線形 vs RBF）と k 近傍法による根拠分析](notebooks/ch2_svm_knn.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_svm_knn.ipynb)
+  - 最終確認 2026/11/18
+  - [サンプルデータ](misc/covid-annotation.csv)の高次元スパースな TF-IDF 表現に対し、線形カーネル（`LinearSVC`）と多項式・RBF カーネルの精度・過学習・計算時間を比較します。あわせて TF-IDF コサイン類似度を用いた k 近傍法（k-NN）で、予測の根拠や誤分類の原因となった類似訓練事例を確認できます（CPU のみ・十数秒で実行できます）。
 - [日本語 BERT モデルによる文書分類](notebooks/ch2_bert.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_bert.ipynb)
   - 最終確認 2026/10/20
   - Transformers 5 で動くように更新しました。東北大の BERT モデルの名前が `cl-tohoku` から `tohoku-nlp` に変わったので、合わせて変更しています。
@@ -43,6 +49,9 @@
 - [形態素解析・サブワード分割と固有表現認識（系列ラベリング）](notebooks/ch3_morphology_ner.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_morphology_ner.ipynb)
   - 最終確認 2026/11/18
   - `SudachiPy` の分割単位（短単位・中単位・長単位）の違い、`SentencePiece` によるサブワード分割と未知語への振る舞い、BIO タグと CRF による固有表現認識（素性テンプレートによる精度変化と遷移重みの確認）を体験できます（CPU のみ・十数秒で実行できます）。
+- [ガゼッティア（辞書）による固有表現認識とサブワード・BIO ラベル整合](notebooks/ch3_ner_gazetteer_subword.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_ner_gazetteer_subword.ipynb)
+  - 最終確認 2026/11/18
+  - 最長一致ガゼッティアでの多義語誤マッチを文脈分類器とのハイブリッド判定で抑える手法と、`SentencePiece` によるサブワード分割結果へ BIO タグ（`-100` マスク含む）を整合させる前処理・不正 `I-XXX` 遷移を補正する後処理を体験できます（CPU のみ・数秒で実行できます）。
 - [編集距離と n-gram 言語モデルによる誤り検出・訂正](notebooks/ch3_edit_distance_lm.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_edit_distance_lm.ipynb)
   - 最終確認 2026/11/18
   - Levenshtein 距離と隣接文字入れ替え（swap）を考慮した Damerau-Levenshtein 距離を動的計画法で実装し、スペル訂正の候補ランキングや n-gram 言語モデル（パープレキシティ）による誤り検出を体験できます（CPU のみ・数秒で実行できます）。
@@ -58,6 +67,9 @@
 - [文書要約のベースラインと ROUGE 評価](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
   - 最終確認 2026/11/18
   - ROUGE-1 / ROUGE-2 / ROUGE-L を定義式から実装し、抽出型要約の 3 手法（リード法・TextRank（単語共起ベース）・LexRank（TF-IDF コサイン類似度ベース））を比較します。ニュース型（冒頭結論）と後半結論型での手法ごとの得意・不得意や、抽出型要約の限界を確認できます（CPU のみ・数秒で実行できます）。
+- [統計的機械翻訳の基礎（IBM Model 1）と BLEU 評価](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
+  - 最終確認 2026/11/18
+  - EM アルゴリズムによる IBM Model 1 の単語アライメント学習・可視化と、第 1 章から移設した BLEU の定義式実装（クリッピング・簡潔性ペナルティ・`sacrebleu` 検証・書籍 図 4.11 の再現・言い換えや否定反転での限界）を CPU のみ・数秒で体験できます。
 - [対話システムの基礎（ルールベースと検索型）](notebooks/ch4_dialogue.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_dialogue.ipynb)
   - 最終確認 2026/11/18
   - ELIZA 風の正規表現・テンプレートによるルールベース対話と、TF-IDF コサイン類似度を用いた用例検索型対話を実装し、未知発話に対するフォールバック設計やキャラクター一貫性の違いを確認できます（CPU のみ・数秒で実行できます）。
@@ -75,13 +87,13 @@
 - [言語資源のクレンジングと重複排除（データリークの実験）](notebooks/ch5_data_cleaning.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_data_cleaning.ipynb)
   - 最終確認 2026/11/18
   - HTML タグ・URL 除去や Unicode 正規化（NFKC）、文字 n-gram の Jaccard 係数による近似重複検出を実装し、重複を除去せずにデータ分割した場合のデータリーク（評価の過大評価）を実験で確認できます（CPU のみ・数秒で実行できます）。
+- [形態素解析のユーザ辞書作成と単体テスト](notebooks/ch5_dictionary.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_dictionary.ipynb)
+  - 最終確認 2026/11/18
+  - 書籍 5-3（辞書作成）に対応し、システム辞書だけでは分割・正規化がうまくいかない専門用語を `SudachiPy` のユーザ辞書 CSV（表層形・品詞・読み・正規化形）へ登録して `sudachipy ubuild` でコンパイルし、エラー記録と単体テストで動作を検証します（CPU のみ・十数秒で実行できます）。
 - [フレーズ分類ラベルアノテーションと品質管理](notebooks/ch5_annotation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_annotation.ipynb)
   - 最終確認 2026/11/16
   - 書籍に載せている演習例は楽天データセットによるものなので配布はできませんが、配布可能な宿泊レビュー風のサンプルデータ（100件）を作成し、スプレッドシート用の [Excel ファイル](misc/phrase-annotation.xlsx)と Colab 演習用の [CSV ファイル](misc/phrase-annotation.csv)を公開しました。
   - 2人の作業者による評価極性アノテーションから混同行列と Cohen の κ を計算し、不一致事例の分析・仕様書の改訂によって未知データでの一致率が向上するプロセスを体験できます。あわせて、3人以上の作業者に対する Fleiss の κ とクラウドソーシングでのスパマー検出、学習曲線や分類器の予測確率を用いたアノテーションミス検出も扱っています。
-- [形態素解析のユーザ辞書作成と単体テスト](notebooks/ch5_dictionary.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_dictionary.ipynb)
-  - 最終確認 2026/11/18
-  - 書籍 5-3（辞書作成）に対応し、システム辞書だけでは分割・正規化がうまくいかない専門用語を `SudachiPy` のユーザ辞書 CSV（表層形・品詞・読み・正規化形）へ登録して `sudachipy ubuild` でコンパイルし、エラー記録と単体テストで動作を検証します（CPU のみ・十数秒で実行できます）。
 
 ## 練習問題
 
