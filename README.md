@@ -68,7 +68,7 @@
   - 最終確認 2026/11/18
   - Levenshtein 距離と隣接文字入れ替え（swap）を考慮した Damerau-Levenshtein 距離を動的計画法で実装し、スペル訂正の候補ランキングや n-gram 言語モデル（パープレキシティ）による誤り検出を体験できます（CPU のみ・数秒で実行できます）。
 - [Fast GECToR と W&I による英語誤り検出・訂正](notebooks/ch3_gector.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_gector.ipynb)
-  - 最終確認 2026/10/21（2026/11/18 に GPU 確認・`QUICK_RUN` 切替・閾値トレードオフ比較・エラー分析表を追加）
+  - 最終確認 2026/11/19
   - データを cLang-8 から、BEA-2019 共有タスクで公開された W&I+LOCNESS v2.1 に変更しました。W&I は非営利の研究・教育目的なら申請なしでダウンロードできるので、Lang-8 のデータの申請や cLang-8 の作成が不要になり、1つのノートブックで最後まで実行できます。
   - W&I の訓練データ（約3.4万文）で10エポック訓練し、T4 GPU で40分ほどで終わります（短時間で動作確認したい方向けに `QUICK_RUN = True` の軽量モードも用意しています）。テストデータの正解は公開されていないので、開発データを半分に分けて開発データとテストデータにしています。
   - 学習率とエポック数を探索し、[GECToR の訓練ガイド](https://github.com/grammarly/gector/blob/master/docs/training_parameters.md)にならって最初の2エポックはエンコーダを固定して訓練する（`--cold_step_count 2`）ようにしました。Fast GECToR のこの機能にはバグがあるので、ノートブックの中でソースコードを1行修正しています。ERRANT で評価すると F0.5 は0.41程度です（最初の設定では0.26程度でした）。開発データ上での `--min_error_probability` 閾値トレードオフ比較や、原文・予測・正解の3列テーブルによるエラー分析も確認できます。
