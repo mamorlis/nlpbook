@@ -27,7 +27,7 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
 - **GPU 推奨** · [英日機械翻訳の品質推定](notebooks/ch1_qe.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_qe.ipynb)
   - 最終確認 2026/11/19
   - データを WMT21・WMT22 の品質推定タスクで公開された英日翻訳のデータ（人手評価のスコア付き、それぞれ1,000文）に変更しました。WMT21 のデータで訓練し、WMT22 のデータでテストします。
-  - 2021年以降更新されていない TransQuest の代わりに、Transformers の `Trainer` で XLM-R をファインチューニングするようにしました（TransQuest の MonoTransQuest と同じ構成です）。WMT22 の公式の評価尺度である Kendall's tau でも評価します。
+  - 2021年以降更新されていない TransQuest の代わりに、Transformers の `Trainer` で XLM-R をファインチューニングするようにしました（TransQuest の MonoTransQuest と同じ構成です）。開発データ上の Kendall の順位相関係数でモデルを選び、テストでは [WMT22 の英日文単位品質推定の主指標](https://aclanthology.org/2022.wmt-1.3/)である Spearman の順位相関係数も報告します。
   - 既存の品質推定モデル（COMET-QE）との比較に加え、人手評価スコアとの散布図や大きく外した翻訳事例（流暢だが誤訳している例など）を確認できます。
 
 ### 第2章
