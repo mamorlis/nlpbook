@@ -32,6 +32,8 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
 
 ### 第2章
 
+書籍 2-4「演習：品質推定」は、[第1章に掲載している英日機械翻訳の品質推定](notebooks/ch1_qe.ipynb)に対応します。
+
 - **CPU** · [評価極性辞書と文単位・文書単位の極性分析](notebooks/ch2_sentiment_lexicon.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_sentiment_lexicon.ipynb)
   - 最終確認 2026/11/18
   - [サンプルデータ](misc/phrase-annotation.csv)（100件）を使い、極性辞書のみ・否定反転と逆接を考慮したヒューリスティクス・教師あり機械学習（Bag-of-n-grams + ロジスティック回帰）を比較します。後半では複数文からなる宿泊レビューを用い、文書全体を一括判定する手法と文単位に分解して不満根拠を特定・重みづけ集約する手法の違いを確認できます（CPU のみ・数秒で実行できます）。
@@ -53,7 +55,7 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
   - 書籍 表 2.1（6 段階評価の混同行列）をヒートマップで可視化し、Strict / Lenient（±1）正解率および重みつきカッパ係数（QWK）を定義式から実装して `scikit-learn` と比較します。あわせて [サンプルデータ](misc/phrase-annotation.csv) の 5 段階スコアを用い、MSE 最小化の回帰モデルが平均値付近に予測を集中させてしまう「MSE の罠」を確認できます（CPU のみ・数秒で実行できます）。
 - **CPU** · [ランキング問題と順位評価指標（Kendall's τ・Spearman's ρ・nDCG）](notebooks/ch2_ranking.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_ranking.ipynb)
   - 最終確認 2026/11/18
-  - Kendall の順位相関係数 $\tau_b$・Spearman の順位相関係数 $\rho$・nDCG@k を定義式から実装して `scipy.stats` / `scikit-learn` と比較します。さらに [サンプルデータ](misc/phrase-annotation.csv) の 5 段階スコアを用い、Pairwise ランキング（特徴量差分のロジスティック回帰）と Pointwise 回帰（Ridge）を 5 分割交差検証で比較するとともに、評価尺度の単調非線形変換に対して Pairwise ランキングの順位が 100% 不変であることを実証します（CPU のみ・数秒で実行できます）。
+  - Kendall の順位相関係数 $\tau_b$・Spearman の順位相関係数 $\rho$・nDCG@k を定義式から実装して `scipy.stats` / `scikit-learn` と比較します。さらに [サンプルデータ](misc/phrase-annotation.csv) の 5 段階スコアを用い、Pairwise ランキング（特徴量差分のロジスティック回帰）と Pointwise 回帰（Ridge）を 5 分割交差検証で比較するとともに、評価ラベルの大小関係を保つ非線形変換の前後で、Pairwise ランキングの予測順位が一致することを確認します（CPU のみ・数秒で実行できます）。
 
 ### 第3章
 
@@ -72,19 +74,19 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
   - 日本語 BERT（`tohoku-nlp/bert-base-japanese-v3`）と `AutoModelForTokenClassification` を用い、サブワードに対する `-100` ラベルマスク整合、ファインチューニング、および `seqeval` によるエンティティ単位の F1 評価（トークン単位正解率との違い）とエラー分析を体験できます。
 - **CPU** · [編集距離と n-gram 言語モデルによる誤り検出・訂正](notebooks/ch3_edit_distance_lm.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_edit_distance_lm.ipynb)
   - 最終確認 2026/11/18
-  - Levenshtein 距離と隣接文字入れ替え（swap）を考慮した Damerau-Levenshtein 距離を動的計画法で実装し、スペル訂正の候補ランキングや n-gram 言語モデル（パープレキシティ）による誤り検出を体験できます（CPU のみ・数秒で実行できます）。
+  - Levenshtein 距離と隣接文字入れ替え（swap）を考慮した 制約付き Damerau–Levenshtein 距離（OSA）を動的計画法で実装し、スペル訂正の候補ランキングや 単語バイグラム言語モデル（パープレキシティ）による誤り検出を体験できます（CPU のみ・数秒で実行できます）。
 - **GPU 必須** · [Fast GECToR と W&I による英語誤り検出・訂正](notebooks/ch3_gector.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_gector.ipynb)
   - 最終確認 2026/11/19
   - データを cLang-8 から、BEA-2019 共有タスクで公開された W&I+LOCNESS v2.1 に変更しました。W&I は非営利の研究・教育目的なら申請なしでダウンロードできるので、Lang-8 のデータの申請や cLang-8 の作成が不要になり、1つのノートブックで最後まで実行できます。
   - W&I の訓練データ（約3.4万文）で10エポック訓練し、T4 GPU で40分ほどで終わります（短時間で動作確認したい方向けに `QUICK_RUN = True` の軽量モードも用意しています）。テストデータの正解は公開されていないので、開発データを半分に分けて開発データとテストデータにしています。
-  - 学習率とエポック数を探索し、[GECToR の訓練ガイド](https://github.com/grammarly/gector/blob/master/docs/training_parameters.md)にならって最初の2エポックはエンコーダを固定して訓練する（`--cold_step_count 2`）ようにしました。Fast GECToR のこの機能にはバグがあるので、ノートブックの中でソースコードを1行修正しています。ERRANT で評価すると F0.5 は0.41程度です（最初の設定では0.26程度でした）。開発データ上での `--min_error_probability` 閾値トレードオフ比較や、原文・予測・正解の3列テーブルによるエラー分析も確認できます。
+  - 学習率とエポック数を探索し、[GECToR の訓練ガイド](https://github.com/grammarly/gector/blob/master/docs/training_parameters.md)にならって最初の2エポックはエンコーダを固定して訓練する（`--cold_step_count 2`）ようにしました。Fast GECToR のこの機能にはバグがあるので、ノートブックの中でソースコードを1行修正しています。公開開発データを分けた演習内テストでの ERRANT の $F_{0.5}$ は0.41程度です（最初の設定では0.26程度でした）。開発データ上での `--min_error_probability` 閾値トレードオフ比較や、原文・予測・正解の3列テーブルによるエラー分析も確認できます。
   - Fast GECToR は2023年以降更新されていないため、ノートブックの中で `uv` を使って Python 3.10 の環境を作っています。
 
 ### 第4章
 
 - **CPU** · [文書要約のベースラインと ROUGE 評価](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
   - 最終確認 2026/11/18
-  - ROUGE-1 / ROUGE-2 / ROUGE-L を定義式から実装し、抽出型要約の 3 手法（リード法・TextRank（単語共起ベース）・LexRank（TF-IDF コサイン類似度ベース））を比較します。ニュース型（冒頭結論）と後半結論型での手法ごとの得意・不得意や、抽出型要約の限界を確認できます（CPU のみ・数秒で実行できます）。
+  - ROUGE-1 / ROUGE-2 / ROUGE-L を定義式から実装し、抽出型要約の 3 手法（リード法・TextRank（共有文字バイグラムに基づく）・LexRank（TF-IDF コサイン類似度ベース））を比較します。ニュース型（冒頭結論）と後半結論型での手法ごとの得意・不得意や、抽出型要約の限界を確認できます（CPU のみ・数秒で実行できます）。
 - **CPU** · [統計的機械翻訳の基礎（IBM Model 1）と BLEU 評価](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
   - 最終確認 2026/11/18
   - EM アルゴリズムによる IBM Model 1 の単語アライメント学習・可視化と、第 1 章から移設した BLEU の定義式実装（クリッピング・簡潔性ペナルティ・`sacrebleu` 検証・書籍 図 4.11 の再現・言い換えや否定反転での限界）を CPU のみ・数秒で体験できます。
@@ -98,7 +100,7 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
   - `fairseq` は2022年で開発が止まっていて、Google Colab では動かせません。
 - **CPU** · [対話システムの基礎（ルールベース・検索型・タスク指向対話）](notebooks/ch4_dialogue.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_dialogue.ipynb)
   - 最終確認 2026/11/18
-  - ELIZA 風の正規表現・テンプレートによるルールベース対話、TF-IDF コサイン類似度を用いた用例検索型対話に加え、意図分類・スロット抽出・対話状態管理を組み合わせた複数ターンのタスク指向対話（宿泊予約）を体験できます（CPU のみ・数秒で実行できます）。
+  - ELIZA 風の正規表現・テンプレートによるルールベース対話、TF-IDF コサイン類似度を用いた用例検索型対話に加え、意図分類・スロット抽出・対話状態管理を組み合わせた複数ターンのタスク指向対話（宿泊条件の確認）を体験できます（CPU のみ・数秒で実行できます）。
 - **GPU 推奨** · [軽量オープン LLM によるプロンプト演習とハルシネーション抑制](notebooks/ch4_llm_prompt.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_llm_prompt.ipynb)
   - 最終確認 2026/11/19
   - Google Colab T4 GPU 向け（API キー不要・オープンウェイトの `Qwen/Qwen2.5-1.5B-Instruct` を使用）
@@ -115,7 +117,7 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
 - **CPU** · [フレーズ分類ラベルアノテーションと品質管理](notebooks/ch5_annotation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_annotation.ipynb)
   - 最終確認 2026/11/18
   - 書籍に載せている演習例は楽天データセットによるものなので配布はできませんが、配布可能な宿泊レビュー風のサンプルデータ（100件）を作成し、スプレッドシート用の [Excel ファイル](misc/phrase-annotation.xlsx)と Colab 演習用の [CSV ファイル](misc/phrase-annotation.csv)を公開しました。
-  - 2人の作業者による評価極性アノテーションから混同行列と Cohen の κ を計算し、不一致事例の分析・仕様書の改訂によって未知データでの一致率が向上するプロセスを体験できます。あわせて、3人以上の作業者に対する Fleiss の κ とスパマー検出、欠損あり行列や 5 段階順序尺度に対応する Krippendorff の α、学習曲線や分類器の予測確率を用いたアノテーションミス検出も扱っています。
+  - 2人の作業者による評価極性アノテーションから混同行列と Cohen の κ を計算し、不一致事例の分析・仕様書を改訂して未知データで一致度を測り直す手順を体験できます。あわせて、3人以上の作業者に対する Fleiss の κ とスパマー検出、欠損あり行列や 5 段階順序尺度に対応する Krippendorff の α、学習曲線や分類器の予測確率を用いたアノテーションミス候補の抽出も扱っています。
 
 ## 練習問題
 
