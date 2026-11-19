@@ -31,7 +31,7 @@
   - 最終確認 2026/11/18
   - 共起行列と PPMI + SVD による静的単語埋め込み（分散表現）の学習・コサイン類似度探索・2 次元可視化を通じ、多義語が単一ベクトルに潰れてしまう限界を確認したうえで、文脈付き埋め込み（文脈加重表現・日本語 BERT）によって多義語が文脈ごとに分離される仕組みを体験できます（CPU のみ・数秒で実行できます）。
 - [日本語 BERT モデルによる文書分類](notebooks/ch2_bert.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_bert.ipynb)
-  - 最終確認 2026/10/20（2026/11/18 に GPU 確認・`fp16` 有効化・誤分類エラー分析を追加）
+  - 最終確認 2026/11/19
   - Transformers 5 で動くように更新しました。東北大の BERT モデルの名前が `cl-tohoku` から `tohoku-nlp` に変わったので、合わせて変更しています（GPU 推奨）。
   - [サンプルデータ](misc/covid-annotation.csv)1,000件（TRUE と FALSE が500件ずつ）を層化分割して訓練・開発・テストし、正解率・F1・混同行列に加えて誤分類事例を `コメント` 列と照らし合わせて分析できます。テストデータでの正解率・F1 は0.95〜0.97程度です。
 - [多クラス分類と多ラベル分類（評価指標と共起）](notebooks/ch2_multilabel.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_multilabel.ipynb)
@@ -44,7 +44,7 @@
   - 最終確認 2026/11/18
   - Kendall の順位相関係数 $\tau_b$・Spearman の順位相関係数 $\rho$・nDCG@k を定義式から実装して `scipy.stats` / `scikit-learn` と比較します。さらに [サンプルデータ](misc/phrase-annotation.csv) の 5 段階スコアを用い、Pairwise ランキング（特徴量差分のロジスティック回帰）と Pointwise 回帰（Ridge）を 5 分割交差検証で比較するとともに、評価尺度の単調非線形変換に対して Pairwise ランキングの順位が 100% 不変であることを実証します（CPU のみ・数秒で実行できます）。
 - [英日機械翻訳の品質推定](notebooks/ch2_qe.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_qe.ipynb)
-  - 最終確認 2026/10/21（2026/11/18 に GPU 確認・`fp16` 有効化・散布図と外れ値分析を追加）
+  - 最終確認 2026/11/19
   - データを WMT21・WMT22 の品質推定タスクで公開された英日翻訳のデータ（人手評価のスコア付き、それぞれ1,000文）に変更しました。WMT21 のデータで訓練し、WMT22 のデータでテストします（GPU 推奨）。
   - 2021年以降更新されていない TransQuest の代わりに、Transformers の `Trainer` で XLM-R をファインチューニングするようにしました（TransQuest の MonoTransQuest と同じ構成です）。WMT22 の公式の評価尺度である Kendall's tau でも評価します。
   - 既存の品質推定モデル（COMET-QE）との比較に加え、人手評価スコアとの散布図や大きく外した翻訳事例（流暢だが誤訳している例など）を確認できます。
@@ -61,6 +61,7 @@
   - 最終確認 2026/11/18
   - 最長一致ガゼッティアでの多義語誤マッチを文脈分類器とのハイブリッド判定で抑える手法と、`SentencePiece` によるサブワード分割結果へ BIO タグ（`-100` マスク含む）を整合させる前処理・不正 `I-XXX` 遷移を補正する後処理を体験できます（CPU のみ・数秒で実行できます）。
 - [BERT による固有表現認識（Token Classification）](notebooks/ch3_bert_ner.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_bert_ner.ipynb)
+  - 最終確認 2026/11/19
   - Google Colab T4 GPU 向け（要 GPU ランタイム・数分で実行可能）
   - 日本語 BERT（`tohoku-nlp/bert-base-japanese-v3`）と `AutoModelForTokenClassification` を用い、サブワードに対する `-100` ラベルマスク整合、ファインチューニング、および `seqeval` によるエンティティ単位の F1 評価（トークン単位正解率との違い）とエラー分析を体験できます。
 - [編集距離と n-gram 言語モデルによる誤り検出・訂正](notebooks/ch3_edit_distance_lm.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_edit_distance_lm.ipynb)
@@ -82,17 +83,18 @@
   - 最終確認 2026/11/18
   - EM アルゴリズムによる IBM Model 1 の単語アライメント学習・可視化と、第 1 章から移設した BLEU の定義式実装（クリッピング・簡潔性ペナルティ・`sacrebleu` 検証・書籍 図 4.11 の再現・言い換えや否定反転での限界）を CPU のみ・数秒で体験できます。
 - [Eole による英日ニューラル機械翻訳演習](notebooks/ch4_eole.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_eole.ipynb)
-  - 最終確認 2026/10/21（2026/11/18 に GPU 確認・Transformer 設定例・Dev BLEU 学習曲線による自動モデル選択・エラー分析表を追加）
+  - 最終確認 2026/11/19
   - 書籍で紹介している OpenNMT-py は2024年の v3.5.1 で開発が止まっているので、後継の [Eole](https://github.com/eole-nlp/eole) を使う演習に変更しました。コマンド名（`onmt_train` → `eole train` など）と設定ファイルの書き方が少し違いますが、演習の内容は同じです（GPU 推奨）。
   - Google Colab の Python 3.13 では Eole の依存ライブラリがインストールできないため、ノートブックの中で `uv` を使って Python 3.12 の環境を作っています。
 - 旧版：[OpenNMT-py によるニューラル機械翻訳演習](notebooks/ch4_opennmt.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_opennmt.ipynb)
-  - 最終確認 2026/10/20（2026/11/18 に GPU 確認・自動モデル選択・エラー分析表・現行 Colab UI 表記へ更新）
+  - 最終確認 2026/11/19
   - 書籍に載せている OpenNMT-py（v3.5.1）のコマンドで演習したい場合はこちらを使ってください（新規の方は後継の Eole 版を推奨します）。Eole 版と同じく、`uv` で Python 3.12 の環境を作っています。
   - `fairseq` は2022年で開発が止まっていて、Google Colab では動かせません。
 - [対話システムの基礎（ルールベース・検索型・タスク指向対話）](notebooks/ch4_dialogue.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_dialogue.ipynb)
   - 最終確認 2026/11/18
   - ELIZA 風の正規表現・テンプレートによるルールベース対話、TF-IDF コサイン類似度を用いた用例検索型対話に加え、意図分類・スロット抽出・対話状態管理を組み合わせた複数ターンのタスク指向対話（宿泊予約）を体験できます（CPU のみ・数秒で実行できます）。
 - [軽量オープン LLM によるプロンプト演習とハルシネーション抑制](notebooks/ch4_llm_prompt.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_llm_prompt.ipynb)
+  - 最終確認 2026/11/19
   - Google Colab T4 GPU 向け（API キー不要・オープンウェイトの `Qwen/Qwen2.5-1.5B-Instruct` を使用）
   - 第 1 章（深層学習の利点と課題）および第 4 章（大規模事前学習モデル）に対応し、単一の LLM による分類・要約・翻訳のプロンプト実行、[サンプルデータ](misc/phrase-annotation.csv)でのゼロショット vs フューショット比較、およびハルシネーション発生例と根拠文書付与（RAG 風プロンプト）による抑制を体験できます。
 
