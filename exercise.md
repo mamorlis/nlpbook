@@ -6,20 +6,23 @@
 
 （回答例）
 
-何が入力で何が出力であるかを規定するもの。
+自然言語処理タスクの定義では、何を入力し、何を出力するかを決める。例えば、文書分類では文書を入力し、あらかじめ定めたカテゴリを出力する。英日機械翻訳では英語の文を入力し、日本語の訳文を出力する。
 
 ### 2
 
 （回答例）
 
-分類タスクの評価尺度には正解ラベルとの一致率によって計算する正解率、適合率・再現率、そして F 値が代表的である。
-生成タスクの評価尺度にはリファレンスを用いた評価尺度である BLEU や ROUGE が用いられている。また、リファレンスを用いない品質推定という手法もある。
+分類タスクでは、全事例のうち正しく分類した割合を正解率、正例と予測したうち実際に正例だった割合を適合率、実際の正例のうち検出できた割合を再現率という。$F_1$ は適合率と再現率の調和平均である。誤検出と見逃しのどちらを重く見るかによって、重視する尺度が変わる。
+
+生成タスクでは、機械翻訳の BLEU や要約の ROUGE のように、生成した文と参照文の重なりを測る尺度が使われる。機械翻訳の品質推定では、原文とシステムの訳文から、参照訳なしで品質スコアを予測する。品質推定モデルの性能は、例えば人手評価との順位相関で測れる。
 
 - 関連ノートブック:
   - [分類タスクの評価尺度と閾値調整（Fβ・特異度・不均衡データ）](notebooks/ch1_evaluation.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_evaluation.ipynb)）
   - [統計的機械翻訳の基礎（IBM Model 1）と BLEU 評価](notebooks/ch4_smt_bleu.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)）
   - [文書要約のベースラインと ROUGE 評価](notebooks/ch4_summarization.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)）
   - [英日機械翻訳の品質推定](notebooks/ch1_qe.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_qe.ipynb)）
+
+**ノートブックで確認**（CPU） — 分類評価の演習で閾値 `0.55` と `0.70` を比べる。見逃しを減らしたい場合はどちらを選ぶか。適合率と再現率を根拠に説明する。
 
 ### 3
 
@@ -34,8 +37,8 @@
 従来のアプローチと比較した深層学習の利点は以下の4つである。
 
 1. 流暢な言語生成が可能になった。
-2. 必ずしも大規模な教師データを準備する必要がなくなった。
-3. マルチモーダル処理の垣根がなくなった。
+2. 事前学習済みモデルを使えば、用途ごとに用意する教師データを減らせる場合がある。
+3. テキストと画像など、複数の種類の入力を同じモデルで扱えるようになった。
 4. 自然言語による指示が可能になった。
 
 - 関連ノートブック:
@@ -49,7 +52,7 @@
 
 1. ハルシネーションが起きる場合がある。
 2. ハイパーパラメータの探索に時間がかかる。
-3. データや GPU など多くの計算資源が必要である。
+3. 大規模モデルの学習には、多くのデータや GPU などの計算資源が必要になる。
 
 - 関連ノートブック:
   - [自然言語処理システムの開発サイクル（文分割・データ分割・計算量）](notebooks/ch1_design_cycle.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_design_cycle.ipynb)）
