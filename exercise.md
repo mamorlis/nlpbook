@@ -19,7 +19,7 @@
 - 関連ノートブック:
   - [分類タスクの評価尺度と閾値調整（Fβ・特異度・不均衡データ）](notebooks/ch1_evaluation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_evaluation.ipynb)
   - [統計的機械翻訳の基礎（IBM Model 1）と BLEU 評価](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
-  - [文書要約のベースラインと ROUGE 評価](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
+  - [文書要約のベースライン・抽象型要約・ROUGE とハルシネーション](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
   - [英日機械翻訳の品質推定](notebooks/ch1_qe.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_qe.ipynb)
 
 **ノートブックで確認**（CPU） — 分類評価の演習で閾値 `0.55` と `0.70` を比べる。見逃しを減らしたい場合はどちらを選ぶか。適合率と再現率を根拠に説明する。
@@ -55,7 +55,7 @@
 3. 大規模モデルの学習には、多くのデータや GPU などの計算資源が必要になる。
 
 - 関連ノートブック:
-  - [自然言語処理システムの開発サイクル（文分割・データ分割・計算量）](notebooks/ch1_design_cycle.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_design_cycle.ipynb)
+  - [自然言語処理システムの開発サイクル（文分割・データ分割・計算量・遠距離教師あり学習）](notebooks/ch1_design_cycle.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_design_cycle.ipynb)
   - [軽量オープン LLM によるプロンプト演習とハルシネーション抑制](notebooks/ch4_llm_prompt.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_llm_prompt.ipynb)
 
 ## 2章
@@ -72,10 +72,11 @@
   - [評価極性辞書と文単位・文書単位の極性分析](notebooks/ch2_sentiment_lexicon.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_sentiment_lexicon.ipynb)
   - [TF-IDF と線形モデルによる文書分類ベースライン・エラー分析](notebooks/ch1_tfidf_baseline.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_tfidf_baseline.ipynb)
   - [SVM カーネル（線形 vs RBF）・k 近傍法・ナイーブベイズによる文書分類と根拠分析](notebooks/ch2_svm_knn.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_svm_knn.ipynb)
+  - [文章の品質推定と解釈可能なシステム設計（接続表現ハイライト・線形モデルの根拠提示・特徴量ベース vs 微調整）](notebooks/ch2_writing_quality.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_writing_quality.ipynb)
   - [単語埋め込み（分散表現）と文脈付き埋め込みの比較](notebooks/ch2_word_embeddings.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_word_embeddings.ipynb)
   - [日本語 BERT モデルによる文書分類](notebooks/ch2_bert.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_bert.ipynb)
 
-**ノートブックで確認**（CPU / GPU） — 評価極性分析の演習（第3節）で、混在レビューに対する文書一括判定（ML）と文単位の辞書＋ルールのみ集約・ハイブリッド重みづけ集約を比べ、根拠文がどう特定されるか確認する。あわせて SVM・k-NN・ナイーブベイズの演習でラプラス平滑化 `alpha`（`1.0` vs `0.1` vs `1e-9`）による Log-Loss や対数尤度比の変化を確かめ、同一テスト分割上で TF-IDF と日本語 BERT (v3) の誤分類事例を比べる。
+**ノートブックで確認**（CPU / GPU） — 評価極性分析の演習（第3節）で、混在レビューに対する文書一括判定 (ML) と文単位の辞書＋ルールのみ集約・ハイブリッド重みづけ集約を比べ、根拠文がどう特定されるか確認する。あわせて SVM・k-NN・ナイーブベイズの演習でラプラス平滑化 `alpha` (`1.0` vs `0.1` vs `1e-9`) による Log-Loss や対数尤度比の変化に加え、不均衡訓練データ（`TRUE` 60 件 vs `FALSE` 400 件）上で `MultinomialNB` の `TRUE` 再現率低下（TF-IDF `1-3gram, alpha=0.2` で `0.360`・Macro-F1 `0.643`）を `ComplementNB` がどう改善するか（`norm=False` で再現率 `0.700`・Macro-F1 `0.817`、TWCNB 構成では `norm=True` で再現率 `0.880`・Macro-F1 `0.840`）確かめる。さらに文章の品質推定演習で `LogisticRegression` の信頼度提示、線形 `SVR` の素性重みと寄与内訳、少データ (N=12) で過剰なファインチューニングが引き起こす過学習（未知 QWK `0.828` → `0.750`）と破壊的忘却（一般文意味類似度保持率 `0.869` → `0.097`）を確認し、同一テスト分割上で TF-IDF と日本語 BERT (v3) の誤分類事例を比べる。
 
 ### 2
 
@@ -130,10 +131,10 @@
 - 関連ノートブック:
   - [固有表現認識の基礎（ガゼッティア・BIO タグ・素性テンプレートと CRF・サブワード整合）](notebooks/ch3_ner_gazetteer_subword.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_ner_gazetteer_subword.ipynb)
   - [BERT による固有表現認識（Token Classification）](notebooks/ch3_bert_ner.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_bert_ner.ipynb)
-  - [形態素解析とサブワード分割（分割単位・正規化・未知語処理）](notebooks/ch3_morphology_ner.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_morphology_ner.ipynb)
-  - [単語ラティス・Viterbi アルゴリズムと CRF vs MEMM](notebooks/ch3_viterbi_crf.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_viterbi_crf.ipynb)
+  - [形態素解析とサブワード分割（分割単位・正規化・未知語処理・Subword Regularization）](notebooks/ch3_morphology_ner.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_morphology_ner.ipynb)
+  - [単語ラティス・仮名漢字変換・CRF vs MEMM・Pointwise 予測](notebooks/ch3_viterbi_crf.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_viterbi_crf.ipynb)
 
-**ノートブックで確認**（CPU / GPU） — 固有表現認識の基礎の演習（第2節）で BIO タグ単位 Macro-F1 とエンティティスパン完全一致の Precision / Recall / F1 を比べ、BERT による NER 演習（第4〜5節）で「すべて `O`」ベースラインのトークン正解率とエンティティ F1 の差を確認する。さらに訓練データにない未知の固有表現 (OOV) に対する訓練語彙ガゼッティアと BERT の汎化性能を比べる。
+**ノートブックで確認**（CPU / GPU） — 固有表現認識の基礎の演習（第2節）で BIO タグ単位 Macro-F1 とエンティティスパン完全一致の Precision / Recall / F1 を比べ、BERT による NER 演習（第4〜5節）で「すべて `O`」ベースラインのトークン正解率とエンティティ F1 の差や未知固有表現 (OOV) への汎化性能を確認する。あわせて形態素解析・サブワード分割の演習（第4節）で Subword Regularization の温度 `alpha` (`0.5` → `0.05`) による分割パターン数の増加（`4` → `19` 通り）を確かめ、Viterbi・仮名漢字変換・Pointwise 予測の演習（第2・4節）でバイグラム言語モデルによる同音異義語解消（「貴社の記者が汽車で帰社した」）および部分的アノテーション 10 文追加による専門複合語一致率の改善（`0.000` → `1.000`、境界 F1 `0.879` → `0.988`）と文脈依存の分割ゆれを確認する。
 
 ### 2
 
@@ -143,9 +144,9 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 
 - 関連ノートブック:
   - [固有表現認識の基礎（ガゼッティア・BIO タグ・素性テンプレートと CRF・サブワード整合）](notebooks/ch3_ner_gazetteer_subword.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_ner_gazetteer_subword.ipynb)
-  - [単語ラティス・Viterbi アルゴリズムと CRF vs MEMM](notebooks/ch3_viterbi_crf.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_viterbi_crf.ipynb)
+  - [単語ラティス・仮名漢字変換・CRF vs MEMM・Pointwise 予測](notebooks/ch3_viterbi_crf.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_viterbi_crf.ipynb)
 
-**ノートブックで確認**（CPU） — 固有表現認識の基礎の演習（第2節）で、素性テンプレートを「表層形のみ」から「+品詞・文字種」「+前後文脈・バイグラム素性」へ段階的に増やしたときの未知固有表現の抽出精度と学習された遷移重みを比べる。あわせて Viterbi・CRF の演習（第2節）で、同一素性でも MEMM が `("新", "橋")` を誤り CRF が正しく識別できる理由を局所遷移確率と大域スコアから説明する。
+**ノートブックで確認**（CPU） — 固有表現認識の基礎の演習（第2節）で、素性テンプレートを「表層形のみ」から「+品詞・文字種」「+前後文脈・バイグラム素性」へ段階的に増やしたときの未知固有表現の抽出精度と学習された遷移重みを比べる。あわせて Viterbi・CRF の演習（第3節）で、同一素性でも MEMM が `("新", "橋")` を誤り CRF が正しく識別できる理由を局所遷移確率と大域スコアから説明する。
 
 ### 3
 
@@ -172,9 +173,9 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 - クロスリンガル要約（異言語間要約）: 言語は「違う」、意味は「要点を保つ」、長さは「違う（短くなる）」。
 
 - 関連ノートブック:
-  - [文書要約のベースラインと ROUGE 評価](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
+  - [文書要約のベースライン・抽象型要約・ROUGE とハルシネーション](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
 
-**ノートブックで確認**（CPU） — 文書要約の演習（第3〜4節）で、ニュース型（冒頭結論）と後半結論型の記事に対するリード法・TextRank・LexRank の ROUGE スコアを比べる。さらに複数文抽出（k=2）で生じる `文1+文2` の内容重複と、MMR（λ=0.6）による冗長性抑制の効果を確認する。
+**ノートブックで確認**（CPU） — 文書要約の演習（第2〜4・6節）で、書籍 図 4.5 の ROUGE-1 (`0.500`)・ROUGE-L (`0.333`) 手計算検証と、ニュース型・後半結論型記事に対するリード法・TextRank・LexRank のスコア、さらに複数文抽出 (k=2) の重複を抑える MMR ($\lambda=0.6$) の効果を確認する。あわせて第6節で、忠実な言い換え抽象要約 (ROUGE-L `0.466`) より数値・極性を誤ったハルシネーション要約 (ROUGE-L `0.917`) のほうが高得点になる逆転現象と事実整合性検査の必要性を確かめる。
 
 ### 2
 
@@ -199,10 +200,11 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 3. 自己教師あり学習と事前学習モデル：大規模な生テキストから自己教師あり学習によって構築された事前学習モデル（大規模言語モデル）により、対象タスクの大規模な教師データがなくても流暢で高精度なテキスト生成が可能になった。
 
 - 関連ノートブック:
+  - [文書要約のベースライン・抽象型要約・ROUGE とハルシネーション](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
   - [Eole による英日ニューラル機械翻訳演習](notebooks/ch4_eole.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_eole.ipynb)
   - [軽量オープン LLM によるプロンプト演習とハルシネーション抑制](notebooks/ch4_llm_prompt.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_llm_prompt.ipynb)
 
-**ノートブックで確認**（GPU） — LLM プロンプト演習で、`phrase-annotation.csv` の残り 97 件に対するゼロショットと 3-shot のフォーマット遵守率・精度の違い、および根拠文書なしのハルシネーションと RAG 風プロンプトによる回答拒否・抑制を比べる。さらに第4節でデコード戦略（Greedy Search・Beam Search `num_beams=4`・温度付き Top-p サンプリング）による出力の再現性と多様性の違いを確認する。
+**ノートブックで確認**（CPU / GPU） — 要約演習（第5〜6節）で Pointer-Generator のコピー機構が OOV 固有表現・数値（`A社`・`栃木工場`・`5000万円` 等、コピー率 `0.868`〜`0.892`）を `<unk>` にせず補完する仕組みとカバレージ機構による反復抑制を確認し、あわせて第6節でハルシネーション検出の必要性を確かめる。続いて LLM プロンプト演習で、`phrase-annotation.csv` の残り 97 件に対するゼロショットと 3-shot のフォーマット遵守率・精度の違い、および根拠文書なしのハルシネーションと RAG 風プロンプトによる回答拒否・抑制を比べ、第4節でデコード戦略（Greedy Search・Beam Search `num_beams=4`・温度付き Top-p サンプリング）の違いを確認する。
 
 ## 5章
 
