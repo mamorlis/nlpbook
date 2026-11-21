@@ -17,13 +17,13 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
 
 - **CPU** · [自然言語処理システムの開発サイクル（文分割・データ分割・計算量）](notebooks/ch1_design_cycle.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_design_cycle.ipynb)
   - 最終確認 2026/11/18
-  - [サンプルデータ](misc/covid-annotation.csv)を使い、素朴な句点文分割が破綻するケース（「モーニング娘。」や括弧内句点）への対処、小さな評価データでハイパーパラメータを選び続けることによる過大評価の実験、および $O(1)$・$O(n)$・$O(n^2)$（ハッシュ探索・線形探索・全対計算）の計算量スケーリング実測を CPU のみ・数秒で体験できます。
+  - [サンプルデータ](misc/covid-annotation.csv)を使い、素朴な句点文分割が破綻するケース（「モーニング娘。」や括弧内句点）への対処、小さな評価データでハイパーパラメータを選び続けることによる過大評価の実験、および `O(1)`・`O(n)`・`O(n^2)`（ハッシュ探索・線形探索・全対計算）の計算量スケーリング実測を CPU のみ・数秒で体験できます。
 - **CPU** · [TF-IDF と線形モデルによる文書分類ベースライン・エラー分析](notebooks/ch1_tfidf_baseline.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_tfidf_baseline.ipynb)
   - 最終確認 2026/11/21
   - [サンプルデータ](misc/covid-annotation.csv)を使い、[SVM・k-NN・ナイーブベイズ演習](notebooks/ch2_svm_knn.ipynb)および[日本語 BERT 演習](notebooks/ch2_bert.ipynb)と `文書ID` が一致する同一の層化分割（訓練 810 件・開発 90 件・テスト 100 件）上で TF-IDF + ロジスティック回帰の軽量ベースラインを構築します。予測に寄与している特徴量（重み）の可視化や、誤分類事例と `コメント` 列を照らし合わせたエラー分析を CPU のみ・数秒で体験できます。
 - **CPU** · [分類タスクの評価尺度と閾値調整（Fβ・特異度・不均衡データ）](notebooks/ch1_evaluation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_evaluation.ipynb)
   - 最終確認 2026/11/18
-  - 正解率・適合率・再現率・特異度・偽陽性率・F値（$F_{0.5}$ / $F_1$ / $F_2$）を定義式から実装して `scikit-learn` と比較し、再現率 0.90 制約を満たす閾値調整、不均衡データでの「正解率の罠」、多クラス分類の Macro / Micro 平均を体験できます（CPU のみ・数秒で実行できます）。
+  - 正解率・適合率・再現率・特異度・偽陽性率・F値（F0.5 / F1 / F2）を定義式から実装して `scikit-learn` と比較し、再現率 0.90 制約を満たす閾値調整、不均衡データでの「正解率の罠」、多クラス分類の Macro / Micro 平均を体験できます（CPU のみ・数秒で実行できます）。
 - **GPU 推奨** · [英日機械翻訳の品質推定](notebooks/ch1_qe.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_qe.ipynb)
   - 最終確認 2026/11/21
   - データを WMT21・WMT22 の品質推定タスクで公開された英日翻訳のデータ（人手評価のスコア付き、それぞれ1,000文）に変更しました。WMT21 のデータで訓練し、WMT22 のデータでテストします。
@@ -56,7 +56,7 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
   - 書籍 表 2.1（6 段階評価の混同行列）をヒートマップで可視化し、Strict / Lenient（±1）正解率および重みつきカッパ係数（QWK）を定義式から実装して `scikit-learn` と比較します。[サンプルデータ](misc/phrase-annotation.csv) の 5 段階スコアを用いた第 3 節では MSE 最小化の回帰モデルが平均値付近に予測を集中させてしまう「MSE の罠」を確認でき、続く第 4 節では訓練データ内での交差検証予測と累積割合の分位点から 5 段階の境界を決め、回帰の収縮を補正する手法を比較できます（CPU のみ・数秒で実行できます）。
 - **CPU** · [ランキング問題と順位評価指標（Kendall's τ・Spearman's ρ・nDCG）](notebooks/ch2_ranking.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_ranking.ipynb)
   - 最終確認 2026/11/18
-  - Kendall の順位相関係数 $\tau_b$・Spearman の順位相関係数 $\rho$・nDCG@k を定義式から実装して `scipy.stats` / `scikit-learn` と比較します。さらに [サンプルデータ](misc/phrase-annotation.csv) の 5 段階スコアを用い、Pairwise ランキング（特徴量差分のロジスティック回帰）と Pointwise 回帰（Ridge）を 5 分割交差検証で比較するとともに、評価ラベルの大小関係を保つ非線形変換の前後で、Pairwise ランキングの予測順位が一致することを確認します（CPU のみ・数秒で実行できます）。
+  - Kendall の順位相関係数 τb・Spearman の順位相関係数 ρ・nDCG@k を定義式から実装して `scipy.stats` / `scikit-learn` と比較します。さらに [サンプルデータ](misc/phrase-annotation.csv) の 5 段階スコアを用い、Pairwise ランキング（特徴量差分のロジスティック回帰）と Pointwise 回帰（Ridge）を 5 分割交差検証で比較するとともに、評価ラベルの大小関係を保つ非線形変換の前後で、Pairwise ランキングの予測順位が一致することを確認します（CPU のみ・数秒で実行できます）。
 - **NLP クックブックの関連章**: [12. テキスト分類](https://github.com/mamorlis/nlpcookbook#12-テキスト分類)（[TF-IDF 12-01](https://github.com/mamorlis/nlpcookbook/blob/main/notebooks/12_classification/tfidf_logreg_ja.ipynb)・[マルチラベル 12-10](https://github.com/mamorlis/nlpcookbook/blob/main/notebooks/12_classification/multilabel.ipynb)・[BERT 12-22](https://github.com/mamorlis/nlpcookbook/blob/main/notebooks/12_classification/bert_finetune.ipynb)・[極性辞書 12-26](https://github.com/mamorlis/nlpcookbook/blob/main/notebooks/12_classification/sentiment_lexicon.ipynb)）・[6. 単語ベクトル](https://github.com/mamorlis/nlpcookbook#6-単語ベクトル)・[8. Transformers の基本操作](https://github.com/mamorlis/nlpcookbook#8-transformers-の基本操作)・[22. 検索](https://github.com/mamorlis/nlpcookbook#22-検索)（[ランキング評価 22-10](https://github.com/mamorlis/nlpcookbook/blob/main/notebooks/22_search/ranking_metrics.ipynb)）
 
 ### 第3章
@@ -81,7 +81,7 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
   - 最終確認 2026/11/21
   - データを cLang-8 から、BEA-2019 共有タスクで公開された W&I+LOCNESS v2.1 に変更しました。W&I は非営利の研究・教育目的なら申請なしでダウンロードできるので、Lang-8 のデータの申請や cLang-8 の作成が不要になり、1つのノートブックで最後まで実行できます。
   - W&I の訓練データ（約3.4万文）で10エポック訓練し、T4 GPU で40分ほどで終わります（短時間で動作確認したい方向けに `QUICK_RUN = True` の軽量モードも用意しています）。テストデータの正解は公開されていないので、開発データを半分に分けて開発データとテストデータにしています。
-  - 学習率とエポック数を探索し、[GECToR の訓練ガイド](https://github.com/grammarly/gector/blob/master/docs/training_parameters.md)にならって最初の2エポックはエンコーダを固定して訓練する（`--cold_step_count 2`）ようにしました。Fast GECToR のこの機能にはバグがあるので、ノートブックの中でソースコードを1行修正しています。公開開発データを分けた演習内テストでの ERRANT の $F_{0.5}$ は0.41程度です（最初の設定では0.26程度でした）。開発データの ERRANT $F_{0.5}$ に基づいてチェックポイントと `--min_error_probability` 閾値の両方を選択して同じテストデータで従来設定と比較する実験や、原文・予測・正解の3列テーブルによるエラー分析も確認できます（実行結果埋め込み済み）。
+  - 学習率とエポック数を探索し、[GECToR の訓練ガイド](https://github.com/grammarly/gector/blob/master/docs/training_parameters.md)にならって最初の2エポックはエンコーダを固定して訓練する（`--cold_step_count 2`）ようにしました。Fast GECToR のこの機能にはバグがあるので、ノートブックの中でソースコードを1行修正しています。公開開発データを分けた演習内テストでの ERRANT の F0.5 は0.41程度です（最初の設定では0.26程度でした）。開発データの ERRANT F0.5 に基づいてチェックポイントと `--min_error_probability` 閾値の両方を選択して同じテストデータで従来設定と比較する実験や、原文・予測・正解の3列テーブルによるエラー分析も確認できます（実行結果埋め込み済み）。
   - Fast GECToR は2023年以降更新されていないため、ノートブックの中で `uv` を使って Python 3.10 の環境を作っています。
 - **NLP クックブックの関連章**: [3. 日本語の形態素解析と文分割](https://github.com/mamorlis/nlpcookbook#3-日本語の形態素解析と文分割)・[7. サブワードとトークナイザ](https://github.com/mamorlis/nlpcookbook#7-サブワードとトークナイザ)（[word_ids 07-09](https://github.com/mamorlis/nlpcookbook/blob/main/notebooks/07_subword/word_ids.ipynb)）・[19. 固有表現抽出](https://github.com/mamorlis/nlpcookbook#19-固有表現抽出)（[CRF 19-10](https://github.com/mamorlis/nlpcookbook/blob/main/notebooks/19_ner/crf_tagger.ipynb)・[BERT 19-11](https://github.com/mamorlis/nlpcookbook/blob/main/notebooks/19_ner/bert_ner_finetune.ipynb)）・[28. 文法誤り訂正と言語教育](https://github.com/mamorlis/nlpcookbook#28-文法誤り訂正と言語教育)（[ERRANT 28-03](https://github.com/mamorlis/nlpcookbook/blob/main/notebooks/28_gec_education/errant.ipynb)・[スペル訂正 28-15](https://github.com/mamorlis/nlpcookbook/blob/main/notebooks/28_gec_education/spelling_correction.ipynb)）・[付録 B](https://github.com/mamorlis/nlpcookbook#付録-b-仕組みを理解するための実装)（[Viterbi B-03](https://github.com/mamorlis/nlpcookbook/blob/main/notebooks/B_implementations/viterbi.ipynb)）
 
@@ -89,7 +89,7 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
 
 - **CPU** · [文書要約のベースラインと ROUGE 評価](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
   - 最終確認 2026/11/21
-  - ROUGE-1 / ROUGE-2 / ROUGE-L を定義式から実装し、抽出型要約の 3 手法（リード法・TextRank（共有文字バイグラムに基づく）・LexRank（TF-IDF コサイン類似度ベース））を比較します。ニュース型（冒頭結論）と後半結論型での手法ごとの得意・不得意や抽出型要約の限界に加え、第 4 節では複数文抽出（$k=2$）における冗長性問題と MMR（Maximal Marginal Relevance）による冗長性抑制の効果を確認できます（CPU のみ・数秒で実行できます）。
+  - ROUGE-1 / ROUGE-2 / ROUGE-L を定義式から実装し、抽出型要約の 3 手法（リード法・TextRank（共有文字バイグラムに基づく）・LexRank（TF-IDF コサイン類似度ベース））を比較します。ニュース型（冒頭結論）と後半結論型での手法ごとの得意・不得意や抽出型要約の限界に加え、第 4 節では複数文抽出（k=2）における冗長性問題と MMR（Maximal Marginal Relevance）による冗長性抑制の効果を確認できます（CPU のみ・数秒で実行できます）。
 - **CPU** · [統計的機械翻訳の基礎（IBM Model 1）と BLEU 評価](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
   - 最終確認 2026/11/18
   - EM アルゴリズムによる IBM Model 1 の単語アライメント学習・可視化と、第 1 章から移設した BLEU の定義式実装（クリッピング・簡潔性ペナルティ・`sacrebleu` 検証・書籍 図 4.11 の再現・言い換えや否定反転での限界）を CPU のみ・数秒で体験できます。
