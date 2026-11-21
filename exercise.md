@@ -71,9 +71,11 @@
 - 関連ノートブック:
   - [評価極性辞書と文単位・文書単位の極性分析](notebooks/ch2_sentiment_lexicon.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_sentiment_lexicon.ipynb)）
   - [TF-IDF と線形モデルによる文書分類ベースライン・エラー分析](notebooks/ch1_tfidf_baseline.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_tfidf_baseline.ipynb)）
-  - [SVM カーネル（線形 vs RBF）と k 近傍法による根拠分析](notebooks/ch2_svm_knn.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_svm_knn.ipynb)）
+  - [SVM カーネル（線形 vs RBF）・k 近傍法・ナイーブベイズによる文書分類と根拠分析](notebooks/ch2_svm_knn.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_svm_knn.ipynb)）
   - [単語埋め込み（分散表現）と文脈付き埋め込みの比較](notebooks/ch2_word_embeddings.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_word_embeddings.ipynb)）
   - [日本語 BERT モデルによる文書分類](notebooks/ch2_bert.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_bert.ipynb)）
+
+**ノートブックで確認**（CPU / GPU） — 評価極性分析の演習（第3節）で、混在レビューに対する文書一括判定（ML）と文単位の辞書＋ルールのみ集約・ハイブリッド重みづけ集約を比べ、根拠文がどう特定されるか確認する。あわせて SVM・k-NN・ナイーブベイズの演習でラプラス平滑化 `alpha`（`1.0` vs `0.1` vs `1e-9`）による Log-Loss や対数尤度比の変化を確かめ、同一テスト分割上で TF-IDF と日本語 BERT (v3) の誤分類事例を比べる。
 
 ### 2
 
@@ -84,7 +86,9 @@
 多ラベル分類問題は入力に対し複数あるラベルそれぞれについて分類する問題である（ラベルが n 個あれば 2^n 個の組み合わせがある）。具体例としては、同じ記事に「政治」と「スポーツ」を同時に付けるタスクがある。
 
 - 関連ノートブック:
-  - [多クラス分類と多ラベル分類（評価指標と共起）](notebooks/ch2_multilabel.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_multilabel.ipynb)）
+  - [多クラス分類と多ラベル分類（評価指標と訓練 CV による閾値選択）](notebooks/ch2_multilabel.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_multilabel.ipynb)）
+
+**ノートブックで確認**（CPU） — 多ラベル分類の演習で、Top-1 多クラス分類、標準閾値 `0.50`、訓練データの 4 分割 CV で選んだ閾値 `0.35` の結果を比べる。Subset Accuracy と Micro-F1 / Samples-F1 の差がなぜ開くか、複合トピック記事の予測確率表から説明する。
 
 ### 3
 
@@ -98,6 +102,8 @@
   - [統計的機械翻訳の基礎（IBM Model 1）と BLEU 評価](notebooks/ch4_smt_bleu.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)）
   - [英日機械翻訳の品質推定](notebooks/ch1_qe.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_qe.ipynb)）
 
+**ノートブックで確認**（CPU / GPU） — BLEU 演習（第3〜4節）で、シングルリファレンスとマルチリファレンスのスコア差や、言い換え・否定語挿入（`"not"`）に対する BLEU の挙動を確認する。続いて品質推定の演習で、開発データの Kendall と Spearman で選んだ XLM-R チェックポイントおよび COMET-QE の WMT22 テスト順位相関と、過大評価された翻訳事例を比べる。
+
 ### 4
 
 （回答例）
@@ -109,6 +115,8 @@
 - 関連ノートブック:
   - [順序尺度の評価（QWK・Strict/Lenient・分類 vs 回帰）](notebooks/ch2_ordinal_qwk.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_ordinal_qwk.ipynb)）
   - [ランキング問題と順位評価指標（Kendall's τ・Spearman's ρ・nDCG）](notebooks/ch2_ranking.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_ranking.ipynb)）
+
+**ノートブックで確認**（CPU） — 順序尺度の演習（第3〜4節）で、多クラス分類、Ridge 回帰の四捨五入、訓練データ内の交差検証と累積割合から 5 段階の境界を決めた Ridge 回帰を比べ、QWK と Strict 正解率の違いを確認する。あわせてランキング演習（第3節）で、スコアを `{1: 1, 2: 2, 3: 10, 4: 40, 5: 100}` に変換した前後での Pointwise 回帰と Pairwise ランキングの順位一致率（$\tau$）を確かめる。
 
 ## 3章
 
@@ -125,6 +133,8 @@
   - [ガゼッティア（辞書）による固有表現認識とサブワード・BIO ラベル整合](notebooks/ch3_ner_gazetteer_subword.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_ner_gazetteer_subword.ipynb)）
   - [BERT による固有表現認識（Token Classification）](notebooks/ch3_bert_ner.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_bert_ner.ipynb)）
 
+**ノートブックで確認**（CPU / GPU） — 形態素解析・NER の演習で BIO タグ単位 Macro-F1 とエンティティスパン完全一致の Precision / Recall / F1 を比べ、BERT による NER 演習（第4〜5節）で「すべて `O`」ベースラインのトークン正解率とエンティティ F1 の差を確認する。さらに訓練データにない未知の固有表現（OOV）に対する訓練語彙ガゼッティアと BERT の汎化性能を比べる。
+
 ### 2
 
 （回答例）
@@ -134,6 +144,8 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 - 関連ノートブック:
   - [形態素解析・サブワード分割と固有表現認識（系列ラベリング）](notebooks/ch3_morphology_ner.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_morphology_ner.ipynb)）
   - [単語ラティス・Viterbi アルゴリズムと CRF vs MEMM](notebooks/ch3_viterbi_crf.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_viterbi_crf.ipynb)）
+
+**ノートブックで確認**（CPU） — 形態素解析・NER の演習（第5節）で、素性テンプレートを「表層形のみ」から「+品詞・文字種」「+前後文脈・バイグラム素性」へ段階的に増やしたときの未知固有表現の抽出精度と学習された遷移重みを比べる。あわせて Viterbi・CRF の演習（第2節）で、同一素性でも MEMM が `("新", "橋")` を誤り CRF が正しく識別できる理由を局所遷移確率と大域スコアから説明する。
 
 ### 3
 
@@ -145,6 +157,8 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 - 関連ノートブック:
   - [編集距離と n-gram 言語モデルによる誤り検出・訂正](notebooks/ch3_edit_distance_lm.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_edit_distance_lm.ipynb)）
   - [Fast GECToR と W&I による英語誤り検出・訂正](notebooks/ch3_gector.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_gector.ipynb)）
+
+**ノートブックで確認**（CPU / GPU） — 編集距離・言語モデルの演習（第4節）で、編集距離（通信路モデル）と単語バイグラム言語モデルを組み合わせたノイジーチャネルモデルにより、同距離候補の曖昧性解消や実単語誤り（`a` / `an`、`form` / `from`）がどう訂正されるか確認する。続いて Fast GECToR の演習で、開発データの ERRANT $F_{0.5}$ に基づいて選んだチェックポイントと `--min_error_probability` 閾値が、従来設定（閾値 `0.3`）と比べてテストの Precision・Recall・$F_{0.5}$ や見逃し・過剰訂正事例をどう変えるか確かめる。
 
 ## 4章
 
@@ -160,6 +174,8 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 - 関連ノートブック:
   - [文書要約のベースラインと ROUGE 評価](notebooks/ch4_summarization.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)）
 
+**ノートブックで確認**（CPU） — 文書要約の演習（第3〜4節）で、ニュース型（冒頭結論）と後半結論型の記事に対するリード法・TextRank・LexRank の ROUGE スコアを比べる。さらに複数文抽出（$k=2$）で生じる `文1+文2` の内容重複と、MMR（$\lambda=0.6$）による冗長性抑制の効果を確認する。
+
 ### 2
 
 （回答例）
@@ -169,6 +185,8 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 - 関連ノートブック:
   - [統計的機械翻訳の基礎（IBM Model 1）と BLEU 評価](notebooks/ch4_smt_bleu.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)）
   - [Eole による英日ニューラル機械翻訳演習](notebooks/ch4_eole.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_eole.ipynb)）
+
+**ノートブックで確認**（CPU / GPU） — 統計的機械翻訳の演習（第1節）で、IBM Model 1 が語順の異なる英日対訳から語彙翻訳確率 $t(f \mid e)$ を獲得する様子と、翻訳モデルと言語モデルの積で語順を決める仕組みを確認する。あわせて Eole 演習で開発データの BLEU に基づくチェックポイント選択（`step` 別の Dev BLEU 推移）と、テスト訳文の `<unk>` 出現率やワースト 10 文を確かめる。
 
 ### 3
 
@@ -184,6 +202,8 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
   - [Eole による英日ニューラル機械翻訳演習](notebooks/ch4_eole.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_eole.ipynb)）
   - [軽量オープン LLM によるプロンプト演習とハルシネーション抑制](notebooks/ch4_llm_prompt.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_llm_prompt.ipynb)）
 
+**ノートブックで確認**（GPU） — LLM プロンプト演習で、`phrase-annotation.csv` の残り 97 件に対するゼロショットと 3-shot のフォーマット遵守率・精度の違い、および根拠文書なしのハルシネーションと RAG 風プロンプトによる回答拒否・抑制を比べる。さらに第4節でデコード戦略（Greedy Search・Beam Search `num_beams=4`・温度付き Top-p サンプリング）による出力の再現性と多様性の違いを確認する。
+
 ## 5章
 
 ### 1
@@ -195,6 +215,8 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 - 関連ノートブック:
   - [言語資源のクレンジング・重複排除と PII マスキング](notebooks/ch5_data_cleaning.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_data_cleaning.ipynb)）
 
+**ノートブックで確認**（CPU） — クレンジング演習（第3〜4節）で、近似重複を除去せずに分割した場合（条件 A）と除去後（条件 B）のテスト正解率の差からデータリークの影響を確認する。あわせて PII マスキングで `[CARD_OR_ID]`・`[PHONE]`・`[POSTAL]`・`[EMAIL]` を処理する順序や境界条件、および日本語比率・記号比率によるスパム除外の挙動を確かめる。
+
 ### 2
 
 （回答例）
@@ -203,6 +225,8 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 
 - 関連ノートブック:
   - [フレーズ分類ラベルアノテーションと品質管理](notebooks/ch5_annotation.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_annotation.ipynb)）
+
+**ノートブックで確認**（CPU） — アノテーション演習（第2〜3節・第5節）で、仕様書改訂前後の第1・第2ラウンドにおける Cohen の $\kappa$ と、改訂前後のラベルで学習した分類器の未知データ精度を比べる。さらに 5-3 の予測確率を用いたラベル誤り候補の絞り込みと、5-4 の能動学習（Least Confidence による不確実性サンプリング vs ランダムサンプリング）で同じ目標精度に要するラベル付け件数の違いを確認する。
 
 ### 3
 
@@ -216,6 +240,8 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 
 - 関連ノートブック:
   - [フレーズ分類ラベルアノテーションと品質管理](notebooks/ch5_annotation.ipynb)（[Open in Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_annotation.ipynb)）
+
+**ノートブックで確認**（CPU） — アノテーション演習（第4節・第6節）で、チェック問題の正答率と他作業者との平均 $\kappa$ からスパマー（作業者 5）を除外した前後の Fleiss の $\kappa$ と多数決ラベル正解率の変化を確認する。あわせて欠損を含む疎な評価行列でも Krippendorff の $\alpha$ でスパマー除外の効果が定量評価できることを確かめる。
 
 ## 謝辞
 
