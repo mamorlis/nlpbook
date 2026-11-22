@@ -18,7 +18,7 @@
 
 - 関連ノートブック:
   - [分類タスクの評価尺度と閾値調整（Fβ・特異度・不均衡データ）](notebooks/ch1_evaluation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_evaluation.ipynb)
-  - [統計的機械翻訳の基礎（IBM Model 1）と BLEU 評価](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
+  - [統計的機械翻訳の基礎（IBM Model 1）・BLEU 評価・翻訳メモリ・対訳フィルタリング](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
   - [文書要約のベースライン・抽象型要約・ROUGE とハルシネーション](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
   - [英日機械翻訳の品質推定](notebooks/ch1_qe.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_qe.ipynb)
 
@@ -55,8 +55,10 @@
 3. 大規模モデルの学習には、多くのデータや GPU などの計算資源が必要になる。
 
 - 関連ノートブック:
-  - [自然言語処理システムの開発サイクル（文分割・データ分割・計算量・遠距離教師あり学習）](notebooks/ch1_design_cycle.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_design_cycle.ipynb)
+  - [自然言語処理システムの開発サイクル（文分割・データ分割・計算量・遠距離教師あり学習・半教師あり学習）](notebooks/ch1_design_cycle.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_design_cycle.ipynb)
   - [軽量オープン LLM によるプロンプト演習とハルシネーション抑制](notebooks/ch4_llm_prompt.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_llm_prompt.ipynb)
+
+**ノートブックで確認**（CPU） — 開発サイクル演習（第 4〜5 節）で、遠距離教師あり学習における偶然共起ノイズ（24 文中 6 文・`25.0%`）とマルチインスタンス集約による Macro-F1 改善（`0.775` → `1.000`）に加え、第 5 節の半教師あり学習で 6 個のシードルールのみ（`Macro-F1 = 0.000`）や単一ビュー自己学習（View A のみ `0.167`、結合 `0.167`）と比べ、共訓練 (Co-training) と `one sense per discourse` 制約の組合せが Round 1（36 文・`0.878`）→ Round 2（45 文・`1.000`）で未知テスト 24 文を精度良く分類できること、および確信度閾値を `0.35` まで下げると訓練プール誤り率 `0.289`（13 件）のセマンティックドリフトが起きて `Macro-F1 = 0.465` へ低下することを確認する。
 
 ## 2章
 
@@ -100,7 +102,7 @@
 一方、参照文を用いない評価は参照文の品質やカバー率に左右されないという利点があるが、品質推定モデルが対象言語・分野で人手評価とどの程度一致するかを検証する必要がある。
 
 - 関連ノートブック:
-  - [統計的機械翻訳の基礎（IBM Model 1）と BLEU 評価](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
+  - [統計的機械翻訳の基礎（IBM Model 1）・BLEU 評価・翻訳メモリ・対訳フィルタリング](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
   - [英日機械翻訳の品質推定](notebooks/ch1_qe.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_qe.ipynb)
 
 **ノートブックで確認**（CPU / GPU） — BLEU 演習（第3〜4節）で、シングルリファレンスとマルチリファレンスのスコア差や、言い換え・否定語挿入（`"not"`）に対する BLEU の挙動を確認する。続いて品質推定の演習で、開発データの Kendall と Spearman で選んだ XLM-R チェックポイントおよび COMET-QE の WMT22 テスト順位相関と、過大評価された翻訳事例を比べる。
@@ -184,10 +186,10 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 偽。系列変換タスクとはテキスト（単語列）を入力として別のテキスト（単語列）を出力するタスクのことであり、機械翻訳はその代表例である。統計的機械翻訳は機械翻訳を統計ベースのアプローチ（翻訳モデルと言語モデルの組み合わせ）で解く手法であり、系列変換タスクであることに変わりはない。
 
 - 関連ノートブック:
-  - [統計的機械翻訳の基礎（IBM Model 1）と BLEU 評価](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
+  - [統計的機械翻訳の基礎（IBM Model 1）・BLEU 評価・翻訳メモリ・対訳フィルタリング](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
   - [Eole による英日ニューラル機械翻訳演習](notebooks/ch4_eole.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_eole.ipynb)
 
-**ノートブックで確認**（CPU / GPU） — 統計的機械翻訳の演習（第1節）で、IBM Model 1 が語順の異なる英日対訳から語彙翻訳確率 $t(f \mid e)$ を獲得する様子と、翻訳モデルと言語モデルの積で語順を決める仕組みを確認する。あわせて Eole 演習で開発データの BLEU に基づくチェックポイント選択（`step` 別の Dev BLEU 推移）と、テスト訳文の `<unk>` 出現率やワースト 10 文を確かめる。
+**ノートブックで確認**（CPU / GPU） — 統計的機械翻訳の演習（第 1 節・第 5〜6 節）で、IBM Model 1 が語順の異なる英日対訳から語彙翻訳確率 $t(f \mid e)$ を獲得する様子と翻訳モデルと言語モデルの積で語順を決める仕組みに加え、第 5 節の翻訳メモリ (TM) による正規化編集距離ベースの Fuzzy Match 検索（`87.5%` / `88.9%` / `72.7%` の単語差分提示と用語統一チェック）、および第 6 節でノイジー対訳 34 文から長比・日本語文字率・数値一致・双方向 IBM Model 1 信頼度スコア (`tau = 0.32`) によってノイズ 10 文をすべて除外し、単語アライメント `F1` が `0.818` → `0.844`、`Recall` が `0.783` → `0.826` へ向上し `study -> 学ぶ` の確率が `0.25` → `0.73` へ改善することを確認する。あわせて Eole 演習で開発データの BLEU に基づくチェックポイント選択（`step` 別の Dev BLEU 推移）と、テスト訳文の `<unk>` 出現率やワースト 10 文を確かめる。
 
 ### 3
 
@@ -202,9 +204,10 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 - 関連ノートブック:
   - [文書要約のベースライン・抽象型要約・ROUGE とハルシネーション](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
   - [Eole による英日ニューラル機械翻訳演習](notebooks/ch4_eole.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_eole.ipynb)
+  - [対話システムの基礎（ルールベース・検索型・タスク指向対話・検索拡張生成 RAG）](notebooks/ch4_dialogue.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_dialogue.ipynb)
   - [軽量オープン LLM によるプロンプト演習とハルシネーション抑制](notebooks/ch4_llm_prompt.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_llm_prompt.ipynb)
 
-**ノートブックで確認**（CPU / GPU） — 要約演習（第5〜6節）で Pointer-Generator のコピー機構が OOV 固有表現・数値（`A社`・`栃木工場`・`5000万円` 等、コピー率 `0.868`〜`0.892`）を `<unk>` にせず補完する仕組みとカバレージ機構による反復抑制を確認し、あわせて第6節でハルシネーション検出の必要性を確かめる。続いて LLM プロンプト演習で、`phrase-annotation.csv` の残り 97 件に対するゼロショットと 3-shot のフォーマット遵守率・精度の違い、および根拠文書なしのハルシネーションと RAG 風プロンプトによる回答拒否・抑制を比べ、第4節でデコード戦略（Greedy Search・Beam Search `num_beams=4`・温度付き Top-p サンプリング）の違いを確認する。
+**ノートブックで確認**（CPU / GPU） — 要約演習（第5〜6節）で Pointer-Generator のコピー機構が OOV 固有表現・数値（`A社`・`栃木工場`・`5000万円` 等、コピー率 `0.868`〜`0.892`）を `<unk>` にせず補完する仕組みとカバレージ機構による反復抑制を確認し、あわせて第6節でハルシネーション検出の必要性を確かめる。また対話システム演習（第 5 節）では、12 チャンクのホテル規約に対する 6 会話・15 ターンのマルチターン評価で、最新発話のみの検索（`Recall@1 = 0.733`・`MRR = 0.796`）に対し主題エンティティ補完のクエリ書き換えが `Recall@1 = 1.000`・`MRR = 1.000` へ改善すること、および資料外の質問（類似度 `0.081`〜`0.109`）を閾値 `0.16` で安全に回答拒否できることを確認する。続いて LLM プロンプト演習で、`phrase-annotation.csv` の残り 97 件に対するゼロショットと 3-shot のフォーマット遵守率・精度の違い、および根拠文書なしのハルシネーションと RAG 風プロンプトによる回答拒否・抑制を比べ、第4節でデコード戦略（Greedy Search・Beam Search `num_beams=4`・温度付き Top-p サンプリング）の違いを確認する。
 
 ## 5章
 
