@@ -78,7 +78,7 @@
   - [単語埋め込み（分散表現）と文脈付き埋め込みの比較](notebooks/ch2_word_embeddings.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_word_embeddings.ipynb)
   - [日本語 BERT モデルによる文書分類](notebooks/ch2_bert.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_bert.ipynb)
 
-**ノートブックで確認**（CPU / GPU） — 評価極性分析の演習（第3節）で、混在レビューに対する文書一括判定 (ML) と文単位の辞書＋ルールのみ集約・ハイブリッド重みづけ集約を比べ、根拠文がどう特定されるか確認する。あわせて SVM・k-NN・ナイーブベイズの演習でラプラス平滑化 `alpha` (`1.0` vs `0.1` vs `1e-9`) による Log-Loss や対数尤度比の変化に加え、不均衡訓練データ（`TRUE` 60 件 vs `FALSE` 400 件）上で `MultinomialNB` の `TRUE` 再現率低下（TF-IDF `1-3gram, alpha=0.2` で `0.360`・Macro-F1 `0.643`）を `ComplementNB` がどう改善するか（`norm=False` で再現率 `0.700`・Macro-F1 `0.817`、TWCNB 構成では `norm=True` で再現率 `0.880`・Macro-F1 `0.840`）確かめる。さらに文章の品質推定演習で `LogisticRegression` の信頼度提示、線形 `SVR` の素性重みと寄与内訳、少データ (N=12) で過剰なファインチューニングが引き起こす過学習（未知 QWK `0.828` → `0.750`）と破壊的忘却（一般文意味類似度保持率 `0.869` → `0.097`）を確認し、同一テスト分割上で TF-IDF と日本語 BERT (v3) の誤分類事例を比べる。
+**ノートブックで確認**（CPU / GPU） — 評価極性分析の演習（第 3〜4 節）で、混在レビューに対する文書一括判定 (ML) と文単位の辞書＋ルールのみ集約・ハイブリッド重みづけ集約を比べ、根拠文がどう特定されるか確認する。さらに第 4 節で、語彙ネットワーク（105 語・313 エッジ）上の平均場イジングスピンモデルにより、6 語のシードのみ（カバレッジ `0.13`・Macro-F1 `0.379`）から自動拡張した辞書がカバレッジ `0.62`・Macro-F1 `0.850`（否定・逆接ルール併用で `0.902`）へ向上し、中立ブリッジ語（`普通`・`相応` 等）が `0` 付近に抑えられることを確かめる。あわせて SVM・k-NN・ナイーブベイズの演習でラプラス平滑化 `alpha` (`1.0` vs `0.1` vs `1e-9`) による Log-Loss や対数尤度比の変化に加え、不均衡訓練データ（`TRUE` 60 件 vs `FALSE` 400 件）上で `MultinomialNB` の `TRUE` 再現率低下（TF-IDF `1-3gram, alpha=0.2` で `0.360`・Macro-F1 `0.643`）を `ComplementNB` がどう改善するか（`norm=False` で再現率 `0.700`・Macro-F1 `0.817`、TWCNB 構成では `norm=True` で再現率 `0.880`・Macro-F1 `0.840`）確かめる。さらに文章の品質推定演習で `LogisticRegression` の信頼度提示、線形 `SVR` の素性重みと寄与内訳、少データ (N=12) で過剰なファインチューニングが引き起こす過学習（未知 QWK `0.828` → `0.750`）と破壊的忘却（一般文意味類似度保持率 `0.869` → `0.097`）を確認し、同一テスト分割上で TF-IDF と日本語 BERT (v3) の誤分類事例を比べる。
 
 ### 2
 
@@ -161,7 +161,7 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
   - [編集距離と n-gram 言語モデルによる誤り検出・訂正](notebooks/ch3_edit_distance_lm.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_edit_distance_lm.ipynb)
   - [Fast GECToR と W&I による英語誤り検出・訂正](notebooks/ch3_gector.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_gector.ipynb)
 
-**ノートブックで確認**（CPU / GPU） — 編集距離・言語モデルの演習（第4節）で、編集距離（通信路モデル）と単語バイグラム言語モデルを組み合わせたノイジーチャネルモデルにより、同距離候補の曖昧性解消や実単語誤り（`a` / `an`、`form` / `from`）がどう訂正されるか確認する。続いて Fast GECToR の演習で、開発データの ERRANT F0.5 に基づいて選んだチェックポイントと `--min_error_probability` 閾値が、従来設定（閾値 `0.3`）と比べてテストの Precision・Recall・F0.5 や見逃し・過剰訂正事例をどう変えるか確かめる。
+**ノートブックで確認**（CPU / GPU） — 編集距離・言語モデルの演習（第 4〜5 節）で、第 4 節のノイジーチャネルモデルにより同距離候補の曖昧性解消や実単語誤り（`a` / `an`、`form` / `from`）がどう訂正されるか確認し、第 5 節の Knight & Graehl (1997) 音訳通信路モデルで外来語 15 語に対しローマ字＋Levenshtein（Top-1 `0.467`・MRR `0.658`）や音韻 DP のみ（Top-1 `0.667`・MRR `0.800`）と比べ、英語言語モデルとの統合により `アイスクリーム -> ice cream`・`チョコレート -> chocolate`・`クラウン -> crown` 等がすべて 1 位（Top-1 `1.000`・MRR `1.000`）で復元されることを確かめる。続いて Fast GECToR の演習で、開発データの ERRANT F0.5 に基づいて選んだチェックポイントと `--min_error_probability` 閾値が、従来設定（閾値 `0.3`）と比べてテストの Precision・Recall・F0.5 や見逃し・過剰訂正事例をどう変えるか確かめる。
 
 ## 4章
 
@@ -188,8 +188,9 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 - 関連ノートブック:
   - [統計的機械翻訳の基礎（IBM Model 1）・BLEU 評価・翻訳メモリ・対訳フィルタリング](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
   - [Eole による英日ニューラル機械翻訳演習](notebooks/ch4_eole.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_eole.ipynb)
+  - [編集距離と n-gram 言語モデルによる誤り検出・訂正](notebooks/ch3_edit_distance_lm.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_edit_distance_lm.ipynb)
 
-**ノートブックで確認**（CPU / GPU） — 統計的機械翻訳の演習（第 1 節・第 5〜6 節）で、IBM Model 1 が語順の異なる英日対訳から語彙翻訳確率 $t(f \mid e)$ を獲得する様子と翻訳モデルと言語モデルの積で語順を決める仕組みに加え、第 5 節の翻訳メモリ (TM) による正規化編集距離ベースの Fuzzy Match 検索（`87.5%` / `88.9%` / `72.7%` の単語差分提示と用語統一チェック）、および第 6 節でノイジー対訳 34 文から長比・日本語文字率・数値一致・双方向 IBM Model 1 信頼度スコア (`tau = 0.32`) によってノイズ 10 文をすべて除外し、単語アライメント `F1` が `0.818` → `0.844`、`Recall` が `0.783` → `0.826` へ向上し `study -> 学ぶ` の確率が `0.25` → `0.73` へ改善することを確認する。あわせて Eole 演習で開発データの BLEU に基づくチェックポイント選択（`step` 別の Dev BLEU 推移）と、テスト訳文の `<unk>` 出現率やワースト 10 文を確かめる。
+**ノートブックで確認**（CPU / GPU） — 統計的機械翻訳の演習（第 1 節・第 5〜6 節）で、IBM Model 1 が語順の異なる英日対訳から語彙翻訳確率 $t(f \mid e)$ を獲得する様子と翻訳モデルと言語モデルの積で語順を決める仕組みに加え、第 5 節の翻訳メモリ (TM) による正規化編集距離ベースの Fuzzy Match 検索（`87.5%` / `88.9%` / `72.7%` の単語差分提示と用語統一チェック）、および第 6 節でノイジー対訳 34 文から長さ比・日本語文字率・数値一致・双方向 IBM Model 1 信頼度スコア (`tau = 0.32`) によってノイズ 10 文をすべて除外し、単語アライメント `F1` が `0.818` → `0.844`、`Recall` が `0.783` → `0.826` へ向上し `study -> 学ぶ` の確率が `0.25` → `0.73` へ改善することを確認する。あわせて Eole 演習で開発データの BLEU に基づくチェックポイント選択（`step` 別の Dev BLEU 推移）と、テスト訳文の `<unk>` 出現率やワースト 10 文を確かめる。
 
 ### 3
 
@@ -248,6 +249,14 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
   - [フレーズ分類ラベルアノテーションと作業者間一致率](notebooks/ch5_annotation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_annotation.ipynb)
 
 **ノートブックで確認**（CPU） — アノテーション演習（第4〜5節）で、チェック問題の正答率と他作業者との平均 $\kappa$ からスパマー（作業者 5）を除外した前後の Fleiss の $\kappa$ と多数決ラベル正解率の変化を確認する。あわせて欠損を含む疎な評価行列でも Krippendorff の $\alpha$ でスパマー除外の効果が定量評価できることを確かめる。
+
+### 5-5 の関連ノートブック（演習補足）
+
+- 関連ノートブック:
+  - [パイプライン処理のモジュール分割と前後処理・デバッグ](notebooks/ch5_toolkit_pipeline.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_toolkit_pipeline.ipynb)
+  - [パイプラインの高速化・スケーラビリティとボトルネック計測](notebooks/ch5_toolkit_benchmark.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_toolkit_benchmark.ipynb)
+
+**ノートブックで確認**（CPU） — パイプライン分割の演習（第 2〜4 節）で、Stage 3 の差し替えによる精度改善（Macro-F1 `0.457` → `1.000`）、正規化除去（`0.657`）・トークナイズ破壊（`0.196`）・後処理除去（`0.557`）の各アブレーションにおける最上流の原因ステージ局所化、および `critical_override` を無効化した際の回帰テスト検出を確認する。続いて高速化・スケーラビリティ演習で、$N=100$ 件における 1 文ごとのプロセス起動 (`exec`, `4284.48 ms`) に対する常駐 `Popen` ワーカー（`46.35 ms`、約 `92.4` 倍高速）とメモリ内バッチ (`12.39 ms`) の違い、BoW 類似度における Pure Python 多重ループ vs NumPy BLAS `@` / SciPy CSR `@` の速度比（$N=2000$ で `240.9x` / `1364.4x`）、および構成 (A) の I/O ボトルネック（I/O 比率 `81.9%`、アムダール理論上限 `5.5x`、実測 A→B `5.0x`）を段階的に解消して `75.9x` の高速化へつなげる手順を確かめる。
 
 ## 謝辞
 
