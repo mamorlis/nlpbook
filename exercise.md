@@ -56,9 +56,10 @@
 
 - 関連ノートブック:
   - [自然言語処理システムの開発サイクル（文分割・データ分割・計算量・遠距離教師あり学習・半教師あり学習）](notebooks/ch1_design_cycle.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_design_cycle.ipynb)
+  - [TF-IDF と線形モデルによる文書分類ベースライン・エラー分析・素性設計アブレーション](notebooks/ch1_tfidf_baseline.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_tfidf_baseline.ipynb)
   - [軽量オープン LLM によるプロンプト演習とハルシネーション抑制](notebooks/ch4_llm_prompt.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_llm_prompt.ipynb)
 
-**ノートブックで確認**（CPU） — 開発サイクル演習（第 4〜5 節）で、遠距離教師あり学習における偶然共起ノイズ（24 文中 6 文・`25.0%`）とマルチインスタンス集約による Macro-F1 改善（`0.775` → `1.000`）に加え、第 5 節の半教師あり学習で 6 個のシードルールのみ（`Macro-F1 = 0.000`）や単一ビュー自己学習（View A のみ `0.167`、結合 `0.167`）と比べ、共訓練 (Co-training) と `one sense per discourse` 制約の組合せが Round 1（36 文・`0.878`）→ Round 2（45 文・`1.000`）で未知テスト 24 文を精度良く分類できること、および確信度閾値を `0.35` まで下げると訓練プール誤り率 `0.289`（13 件）のセマンティックドリフトが起きて `Macro-F1 = 0.465` へ低下することを確認する。
+**ノートブックで確認**（CPU） — 開発サイクル演習（第 4〜5 節）で、遠距離教師あり学習における偶然共起ノイズ（24 文中 6 文・`25.0%`）とマルチインスタンス集約による Macro-F1 改善（`0.775` → `1.000`）に加え、第 5 節の半教師あり学習で 6 個のシードルールのみ（`Macro-F1 = 0.000`）や単一ビュー自己学習（View A のみ `0.167`、結合 `0.167`）と比べ、共訓練 (Co-training) と `one sense per discourse` 制約の組合せが Round 1（36 文・`0.878`）→ Round 2（45 文・`1.000`）で未知テスト 24 文を精度良く分類できること、および確信度閾値を `0.35` まで下げると訓練プール誤り率 `0.289`（13 件）のセマンティックドリフトが起きて `Macro-F1 = 0.465` へ低下することを確認する。さらに TF-IDF ベースライン演習（第 5 節）で、テストデータを見ずに訓練 5 分割 CV（810 件）と開発データ（90 件）のみを用いて 5 段階の素性設計アブレーションを行い、`char 1-gram`(`Train 5-CV F1 = 0.8916`, `Dev F1 = 0.9231`, `Test F1 = 0.8842`)→ `char_wb 1〜3`(`Train 5-CV = 0.9825`, `Dev = 0.9888`, `Test = 0.9592`)→ `char_wb 1〜4 + 簡易トークン 1〜2`(`Train 5-CV = 0.9900`, `Test = 0.9691`)→ 訓練 OOF・開発分析由来の手がかり素性を加えたハイブリッド素性(`Train 5-CV = 0.9926`, `Dev = 0.9888`, `Test Acc = 0.9900`, `Test F1 = 0.9899`)へ段階的に改善し、`ID 32, 37, 47` が救済される一方、構成的否定を含む `ID 16` が最後まで残ること（BERT 導入の根拠）を確認する。
 
 ## 2章
 
@@ -72,13 +73,13 @@
 
 - 関連ノートブック:
   - [評価極性辞書と文単位・文書単位の極性分析](notebooks/ch2_sentiment_lexicon.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_sentiment_lexicon.ipynb)
-  - [TF-IDF と線形モデルによる文書分類ベースライン・エラー分析](notebooks/ch1_tfidf_baseline.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_tfidf_baseline.ipynb)
+  - [TF-IDF と線形モデルによる文書分類ベースライン・エラー分析・素性設計アブレーション](notebooks/ch1_tfidf_baseline.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_tfidf_baseline.ipynb)
   - [SVM カーネル（線形 vs RBF）・k 近傍法・ナイーブベイズによる文書分類と根拠分析](notebooks/ch2_svm_knn.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_svm_knn.ipynb)
   - [文章の品質推定と解釈可能なシステム設計（接続表現ハイライト・線形モデルの根拠提示・特徴量ベース vs 微調整）](notebooks/ch2_writing_quality.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_writing_quality.ipynb)
   - [単語埋め込み（分散表現）と文脈付き埋め込みの比較](notebooks/ch2_word_embeddings.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_word_embeddings.ipynb)
   - [日本語 BERT モデルによる文書分類](notebooks/ch2_bert.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_bert.ipynb)
 
-**ノートブックで確認**（CPU / GPU） — 評価極性分析の演習（第 3〜4 節）で、混在レビューに対する文書一括判定 (ML) と文単位の辞書＋ルールのみ集約・ハイブリッド重みづけ集約を比べ、根拠文がどう特定されるか確認する。さらに第 4 節で、語彙ネットワーク（105 語・313 エッジ）上の平均場イジングスピンモデルにより、6 語のシードのみ（カバレッジ `0.13`・Macro-F1 `0.379`）から自動拡張した辞書がカバレッジ `0.62`・Macro-F1 `0.850`（否定・逆接ルール併用で `0.902`）へ向上し、中立ブリッジ語（`普通`・`相応` 等）が `0` 付近に抑えられることを確かめる。あわせて SVM・k-NN・ナイーブベイズの演習でラプラス平滑化 `alpha` (`1.0` vs `0.1` vs `1e-9`) による Log-Loss や対数尤度比の変化に加え、不均衡訓練データ（`TRUE` 60 件 vs `FALSE` 400 件）上で `MultinomialNB` の `TRUE` 再現率低下（TF-IDF `1-3gram, alpha=0.2` で `0.360`・Macro-F1 `0.643`）を `ComplementNB` がどう改善するか（`norm=False` で再現率 `0.700`・Macro-F1 `0.817`、TWCNB 構成では `norm=True` で再現率 `0.880`・Macro-F1 `0.840`）確かめる。さらに文章の品質推定演習で `LogisticRegression` の信頼度提示、線形 `SVR` の素性重みと寄与内訳、少データ (N=12) で過剰なファインチューニングが引き起こす過学習（未知 QWK `0.828` → `0.750`）と破壊的忘却（一般文意味類似度保持率 `0.869` → `0.097`）を確認し、同一テスト分割上で TF-IDF と日本語 BERT (v3) の誤分類事例を比べる。
+**ノートブックで確認**（CPU / GPU） — 評価極性分析の演習（第 3〜4 節）で、混在レビューに対する文書一括判定 (ML) と文単位の辞書＋ルールのみ集約・ハイブリッド重みづけ集約を比べ、根拠文がどう特定されるか確認する。さらに第 4 節で、語彙ネットワーク（105 語・313 エッジ）上の平均場イジングスピンモデルにより、6 語のシードのみ（カバレッジ `0.13`・Macro-F1 `0.379`）から自動拡張した辞書がカバレッジ `0.62`・Macro-F1 `0.850`（否定・逆接ルール併用で `0.902`）へ向上し、中立ブリッジ語（`普通`・`相応` 等）が `0` 付近に抑えられることを確かめる。あわせて SVM・k-NN・ナイーブベイズの演習でラプラス平滑化 `alpha` (`1.0` vs `0.1` vs `1e-9`) による Log-Loss や対数尤度比の変化に加え、不均衡訓練データ（`TRUE` 60 件 vs `FALSE` 400 件）上で `MultinomialNB` の `TRUE` 再現率低下（TF-IDF `1-3gram, alpha=0.2` で `0.360`・Macro-F1 `0.643`）を `ComplementNB` がどう改善するか（`norm=False` で再現率 `0.700`・Macro-F1 `0.817`、TWCNB 構成では `norm=True` で再現率 `0.880`・Macro-F1 `0.840`）確かめる。さらに文章の品質推定演習で `LogisticRegression` の信頼度提示、線形 `SVR` の素性重みと寄与内訳、少データ (N=12) で過剰なファインチューニングが引き起こす過学習（未知 QWK `0.828` → `0.750`）と破壊的忘却（一般文意味類似度保持率 `0.869` → `0.097`）を確認し、同一テスト分割上で TF-IDF と日本語 BERT (v3) の誤分類事例を比べる（TF-IDF 演習第 5 節の素性設計アブレーションにより `Test F1 = 0.9592 → 0.9899` まで改善して `ID 32, 37, 47` を救済しても、構成的否定を含む `ID 16` が残ることで BERT 導入の根拠がさらに明確になる）。
 
 ### 2
 
@@ -89,9 +90,9 @@
 多ラベル分類問題は入力に対し複数あるラベルそれぞれについて分類する問題である（ラベルが n 個あれば 2^n 個の組み合わせがある）。具体例としては、同じ記事に「政治」と「スポーツ」を同時に付けるタスクがある。
 
 - 関連ノートブック:
-  - [多クラス分類と多ラベル分類（評価指標と訓練 CV による閾値選択）](notebooks/ch2_multilabel.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_multilabel.ipynb)
+  - [多クラス分類と多ラベル分類（評価指標・ラベル別 CV 閾値・Classifier Chains）](notebooks/ch2_multilabel.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_multilabel.ipynb)
 
-**ノートブックで確認**（CPU） — 多ラベル分類の演習で、Top-1 多クラス分類、標準閾値 `0.50`、訓練データの 4 分割 CV で選んだ閾値 `0.35` の結果を比べる。Subset Accuracy と Micro-F1 / Samples-F1 の差がなぜ開くか、複合トピック記事の予測確率表から説明する。
+**ノートブックで確認**（CPU） — 多ラベル分類の演習（第 2〜3 節）で、Top-1 多クラス分類(`Subset Accuracy = 0.250`, `Micro-F1 = 0.640`)、標準閾値 `0.50`(`Micro-F1 = 0.741`)、訓練データの 4 分割 CV で選んだ共通閾値 `0.35`(`Subset Accuracy = 0.500`, `Micro-F1 = 0.889`)を比べ、Subset Accuracy と Micro-F1 / Samples-F1 の差が開く理由を予測確率表から説明する。さらに第 3 節で、訓練データの条件付き共起確率 $P(\text{Col} \mid \text{Row})$（`0.200〜0.400`）を踏まえたラベル別 CV 閾値（`政治: 0.40, 経済: 0.50, スポーツ: 0.35, IT: 0.30`）により 8 件テストの `Subset Accuracy` が `0.750`・`Micro-F1` が `0.938`(`Hamming Loss = 0.062`)へ向上すること、拡張 16 件テストで標準閾値 `0.50` のゼロ予測 2 件がフォールバックで救済されること(`Micro-F1 0.667 → 0.720`, `Samples-F1 0.600 → 0.725`)、および強い共起がある運用インシデント分類では `Ensemble of Classifier Chains (ECC)` が `OneVsRest` を上回る(`Macro-F1 0.638 → 0.704`)ことを確かめる。
 
 ### 3
 
@@ -249,6 +250,13 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
   - [フレーズ分類ラベルアノテーションと作業者間一致率](notebooks/ch5_annotation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_annotation.ipynb)
 
 **ノートブックで確認**（CPU） — アノテーション演習（第4〜5節）で、チェック問題の正答率と他作業者との平均 $\kappa$ からスパマー（作業者 5）を除外した前後の Fleiss の $\kappa$ と多数決ラベル正解率の変化を確認する。あわせて欠損を含む疎な評価行列でも Krippendorff の $\alpha$ でスパマー除外の効果が定量評価できることを確かめる。
+
+### 5-3 の関連ノートブック（演習補足）
+
+- 関連ノートブック:
+  - [形態素解析のユーザ辞書作成・未知語候補抽出と単体テスト](notebooks/ch5_dictionary.ipynb) [![Open In Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_dictionary.ipynb)
+
+**ノートブックで確認**（CPU） — 形態素解析のユーザ辞書演習（第 2〜4 節）で、`ラベルバイアス問題` の 3 分割誤り修正や `スダチパイ -> SudachiPy` 等の正規化形統一を単体テスト 4 件で検証したうえで、第 4 節の分野コーパス（30 文・582 トークン）vs 背景コーパス（30 文・582 トークン）比較から内部結合度 (PMI) と対数尤度比 ($G^2$, LLR $\ge 3.84$)により専門複合語 8 語（`検索拡張生成` `LLR=8.35`, `知識蒸留` `6.95`, `投機的デコーディング` `5.56` 等）を自動抽出し、一般語（`システム運用` `LLR=-0.00`）や低頻度語（`外部知識` `LLR=2.78`）を除外する仕組みを確かめる。あわせて第 2 節の 4 語と統合した全 12 エントリの `user_auto.dic` をビルドし、未知評価文 8 文の完全一致率が `0.000 → 1.000`・対象語平均分割数が `2.75 → 1.00`（総トークン数 `96 → 82`）へ改善し、既存単体テスト 4 件にも回帰なしで全件合格することを確認する。
 
 ### 5-5 の関連ノートブック（演習補足）
 
