@@ -18,7 +18,7 @@
 
 - 関連ノートブック:
   - [分類タスクの評価尺度と閾値調整（Fβ・特異度・不均衡データ・統計的有意差検定）](notebooks/ch1_evaluation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_evaluation.ipynb)
-  - [統計的機械翻訳の基礎（IBM Model 1・フレーズベース SMT）・BLEU 評価・翻訳メモリ・対訳フィルタリング](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
+  - [機械翻訳の自動評価（BLEU）と対訳コーパスのノイズフィルタリング](notebooks/ch4_bleu_corpus.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_bleu_corpus.ipynb))
   - [文書要約のベースライン・抽象型要約・ROUGE とハルシネーション](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
   - [英日機械翻訳の品質推定](notebooks/ch1_qe.ipynb) [![Open In Colab](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_qe.ipynb)
 
@@ -55,11 +55,11 @@
 3. 大規模モデルの学習には、多くのデータや GPU などの計算資源が必要になる。
 
 - 関連ノートブック:
-  - [自然言語処理システムの開発サイクル（文分割・データ分割・計算量・遠距離教師あり学習・半教師あり学習）](notebooks/ch1_design_cycle.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_design_cycle.ipynb)
+  - [半教師あり学習と遠距離教師あり学習（Yarowsky・共訓練・マルチインスタンス集約）](notebooks/ch1_semisupervised.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_semisupervised.ipynb)
   - [TF-IDF と線形モデルによる文書分類ベースライン・エラー分析・素性設計アブレーション](notebooks/ch1_tfidf_baseline.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_tfidf_baseline.ipynb)
   - [軽量オープン LLM によるプロンプト演習とハルシネーション抑制](notebooks/ch4_llm_prompt.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_llm_prompt.ipynb)
 
-**ノートブックで確認**（CPU） — 開発サイクル演習（第 4〜5 節）で、遠距離教師あり学習における偶然共起ノイズ（24 文中 6 文・`25.0%`）とマルチインスタンス集約による Macro-F1 改善（`0.775` → `1.000`）に加え、第 5 節の半教師あり学習で 6 個のシードルールのみ（`Macro-F1 = 0.000`）や単一ビュー自己学習（View A のみ `0.167`、結合 `0.167`）と比べ、共訓練 (Co-training) と `one sense per discourse` 制約の組合せが Round 1（36 文・`0.878`）→ Round 2（45 文・`1.000`）で未知テスト 24 文を精度良く分類できること、および確信度閾値を `0.35` まで下げると訓練プール誤り率 `0.289`（13 件）のセマンティックドリフトが起きて `Macro-F1 = 0.465` へ低下することを確認する。さらに TF-IDF ベースライン演習（第 5 節）で、テストデータを見ずに訓練 5 分割 CV（810 件）と開発データ（90 件）のみを用いて 5 段階の素性設計アブレーションを行い、`char 1-gram`(`Train 5-CV F1 = 0.8916`, `Dev F1 = 0.9231`, `Test F1 = 0.8842`)→ `char_wb 1〜3`(`Train 5-CV = 0.9825`, `Dev = 0.9888`, `Test = 0.9592`)→ `char_wb 1〜4 + 簡易トークン 1〜2`(`Train 5-CV = 0.9900`, `Test = 0.9691`)→ 訓練 OOF・開発分析由来の手がかり素性を加えたハイブリッド素性(`Train 5-CV = 0.9926`, `Dev = 0.9888`, `Test Acc = 0.9900`, `Test F1 = 0.9899`)へ段階的に改善し、`ID 32, 37, 47` が救済される一方、構成的否定を含む `ID 16` が最後まで残ること（BERT 導入の根拠）を確認する。
+**ノートブックで確認**（CPU） — 半教師あり学習・遠距離教師あり学習の演習（第 1〜2 節）で、第 1 節の半教師あり学習において 6 個のシードルールのみ（`Macro-F1 = 0.000`）や単一ビュー自己学習（View A のみ `0.167`、結合 `0.167`）と比べ、共訓練 (Co-training) と `one sense per discourse` 制約の組合せが Round 1（36 文・`0.878`）→ Round 2（45 文・`1.000`）で未知テスト 24 文を精度良く分類できること、および確信度閾値を `0.35` まで下げると訓練プール誤り率 `0.289`（13 件）のセマンティックドリフトが起きて `Macro-F1 = 0.465` へ低下することを確認する。あわせて第 2 節の遠距離教師あり学習における偶然共起ノイズ（24 文中 6 文・`25.0%`）とマルチインスタンス集約による Macro-F1 改善（`0.775` → `1.000`）を確認する。さらに TF-IDF ベースライン演習（第 5 節）で、テストデータを見ずに訓練 5 分割 CV（810 件）と開発データ（90 件）のみを用いて 5 段階の素性設計アブレーションを行い、`char 1-gram`(`Train 5-CV F1 = 0.8916`, `Dev F1 = 0.9231`, `Test F1 = 0.8842`)→ `char_wb 1〜3`(`Train 5-CV = 0.9825`, `Dev = 0.9888`, `Test = 0.9592`)→ `char_wb 1〜4 + 簡易トークン 1〜2`(`Train 5-CV = 0.9900`, `Test = 0.9691`)→ 訓練 OOF・開発分析由来の手がかり素性を加えたハイブリッド素性(`Train 5-CV = 0.9926`, `Dev = 0.9888`, `Test Acc = 0.9900`, `Test F1 = 0.9899`)へ段階的に改善し、`ID 32, 37, 47` が救済される一方、構成的否定を含む `ID 16` が最後まで残ること（BERT 導入の根拠）を確認する。
 
 ## 2章
 
@@ -103,10 +103,10 @@
 一方、参照文を用いない評価は参照文の品質やカバー率に左右されないという利点があるが、品質推定モデルが対象言語・分野で人手評価とどの程度一致するかを検証する必要がある。
 
 - 関連ノートブック:
-  - [統計的機械翻訳の基礎（IBM Model 1・フレーズベース SMT）・BLEU 評価・翻訳メモリ・対訳フィルタリング](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
+  - [機械翻訳の自動評価（BLEU）と対訳コーパスのノイズフィルタリング](notebooks/ch4_bleu_corpus.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_bleu_corpus.ipynb)
   - [英日機械翻訳の品質推定](notebooks/ch1_qe.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_qe.ipynb)
 
-**ノートブックで確認**（CPU / GPU） — BLEU 演習（第3〜4節）で、シングルリファレンスとマルチリファレンスのスコア差や、言い換え・否定語挿入（`"not"`）に対する BLEU の挙動を確認する。続いて品質推定の演習で、開発データの Kendall と Spearman で選んだ XLM-R チェックポイントおよび COMET-QE の WMT22 テスト順位相関と、過大評価された翻訳事例を比べる。
+**ノートブックで確認**（CPU / GPU） — BLEU・コーパス演習（第 2〜3 節）で、シングルリファレンスとマルチリファレンスのスコア差や、言い換え・否定語挿入（`"not"`）に対する BLEU の挙動を確認する。続いて品質推定の演習で、開発データの Kendall と Spearman で選んだ XLM-R チェックポイントおよび COMET-QE の WMT22 テスト順位相関と、過大評価された翻訳事例を比べる。
 
 ### 4
 
@@ -162,7 +162,7 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
   - [編集距離と n-gram 言語モデルによる誤り検出・訂正](notebooks/ch3_edit_distance_lm.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_edit_distance_lm.ipynb)
   - [Fast GECToR と W&I による英語誤り検出・訂正](notebooks/ch3_gector.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_gector.ipynb)
 
-**ノートブックで確認**（CPU / GPU） — 編集距離・言語モデルの演習（第 4〜6 節）で、第 4 節のノイジーチャネルモデルにより同距離候補の曖昧性解消や実単語誤り（`a` / `an`、`form` / `from`）がどう訂正されるか確認し、第 5 節の Knight & Graehl (1997) 音訳通信路モデルで外来語 15 語に対しローマ字＋Levenshtein（Top-1 `0.467`・MRR `0.658`）や音韻 DP のみ（Top-1 `0.667`・MRR `0.800`）と比べ、英語言語モデルとの統合により `アイスクリーム -> ice cream`・`チョコレート -> chocolate`・`クラウン -> crown` 等がすべて 1 位（Top-1 `1.000`・MRR `1.000`）で復元されることを確かめる。さらに第 6 節の GEC 評価（12 文・3 人手アノテータ）では、`Do-Nothing Baseline` でも Token Accuracy が `0.898` に達する一方、M2 / ERRANT 編集スパン基準では `F0.5 = 0.000` となること、過剰訂正を含む `Aggressive` (`Multi-Ref Prec = 0.542, Rec = 0.765`) が `F1 = 0.634` から `F0.5 = 0.575` へ下がり `Conservative` (`F0.5 = 0.833`) を下回ること、および `Balanced` が 1 参照 (`F0.5 = 0.562`) から 3 参照 Best-Annotator 評価 (`F0.5 = 0.988`) で正当に救済されることを確かめる。続いて Fast GECToR の演習で、開発データの ERRANT F0.5 に基づいて選んだチェックポイントと `--min_error_probability` 閾値が、従来設定（閾値 `0.3`）と比べてテストの Precision・Recall・F0.5 や見逃し・過剰訂正事例をどう変えるか確かめる。
+**ノートブックで確認**（CPU / GPU） — 編集距離・言語モデルの演習（第 4〜6 節）で、第 4 節のノイジーチャネルモデルにより同距離候補の曖昧性解消や実単語誤り（`a` / `an`、`form` / `from`）がどう訂正されるか確認し、第 5 節の GEC 評価（12 文・3 人手アノテータ）では、`Do-Nothing Baseline` でも Token Accuracy が `0.898` に達する一方、M2 / ERRANT 編集スパン基準では `F0.5 = 0.000` となること、過剰訂正を含む `Aggressive` (`Multi-Ref Prec = 0.542, Rec = 0.765`) が `F1 = 0.634` から `F0.5 = 0.575` へ下がり `Conservative` (`F0.5 = 0.833`) を下回ること、および `Balanced` が 1 参照 (`F0.5 = 0.562`) から 3 参照 Best-Annotator 評価 (`F0.5 = 0.988`) で正当に救済されることを確かめる。さらに第 6 節の Knight & Graehl (1997) 音訳通信路モデルでは外来語 15 語に対しローマ字＋Levenshtein（Top-1 `0.467`・MRR `0.658`）や音韻 DP のみ（Top-1 `0.667`・MRR `0.800`）と比べ、英語言語モデルとの統合により `アイスクリーム -> ice cream`・`チョコレート -> chocolate`・`クラウン -> crown` 等がすべて 1 位（Top-1 `1.000`・MRR `1.000`）で復元されることを確かめる。続いて Fast GECToR の演習で、開発データの ERRANT F0.5 に基づいて選んだチェックポイントと `--min_error_probability` 閾値が、従来設定（閾値 `0.3`）と比べてテストの Precision・Recall・F0.5 や見逃し・過剰訂正事例をどう変えるか確かめる。
 
 ## 4章
 
@@ -187,11 +187,12 @@ SVM や CRF などの機械学習手法で系列ラベリング問題を解く�
 偽。系列変換タスクとはテキスト（単語列）を入力として別のテキスト（単語列）を出力するタスクのことであり、機械翻訳はその代表例である。統計的機械翻訳は機械翻訳を統計ベースのアプローチ（翻訳モデルと言語モデルの組み合わせ）で解く手法であり、系列変換タスクであることに変わりはない。
 
 - 関連ノートブック:
-  - [統計的機械翻訳の基礎（IBM Model 1・フレーズベース SMT）・BLEU 評価・翻訳メモリ・対訳フィルタリング](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
+  - [翻訳メモリと統計的機械翻訳の基礎（IBM Model 1・フレーズベース SMT）](notebooks/ch4_smt.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt.ipynb)
+  - [機械翻訳の自動評価（BLEU）と対訳コーパスのノイズフィルタリング](notebooks/ch4_bleu_corpus.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_bleu_corpus.ipynb)
   - [Eole による英日ニューラル機械翻訳演習](notebooks/ch4_eole.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_eole.ipynb)
   - [編集距離と n-gram 言語モデルによる誤り検出・訂正](notebooks/ch3_edit_distance_lm.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_edit_distance_lm.ipynb)
 
-**ノートブックで確認**（CPU / GPU） — 統計的機械翻訳の演習（第 1 節・第 5〜7 節）で、IBM Model 1 が語順の異なる英日対訳から語彙翻訳確率 $t(f \mid e)$ を獲得する様子と翻訳モデルと言語モデルの積で語順を決める仕組みに加え、第 5 節の翻訳メモリ (TM) による正規化編集距離ベースの Fuzzy Match 検索（`87.5%` / `88.9%` / `72.7%` の単語差分提示と用語統一チェック）、および第 6 節でノイジー対訳 34 文から長さ比・日本語文字率・数値一致・双方向 IBM Model 1 信頼度スコア (`tau = 0.32`) によってノイズ 10 文をすべて除外し、単語アライメント `F1` が `0.818` → `0.844`、`Recall` が `0.783` → `0.826` へ向上し `study -> 学ぶ` の確率が `0.25` → `0.73` へ改善することを確認する。さらに第 7 節では、双方向アライメント対称化で `Intersection` (`F1 = 0.760`, `AER = 0.240`) や `Union`（`F1 = 0.818`, `AER = 0.182`、誤リンク `('look', '夏')` がフレーズ抽出を阻害）に対し `Grow-Diag-Final-And` が `F1 = 0.831`・`AER = 0.169` を達成すること、および未知組み合わせ 8 文のデコードで `IBM1 単語翻訳` (`BLEU = 8.25`, `Exact = 0.000`)・`単調 Phrase-SMT` (`BLEU = 66.79`, `Exact = 0.375`) に対し並び替えとバイグラム LM を組み合わせた `Phrase-SMT (Reordering+LM)` が `BLEU = 95.76`・`Exact = 0.875` へ飛躍することを確かめる。あわせて Eole 演習で開発データの BLEU に基づくチェックポイント選択（`step` 別の Dev BLEU 推移）と、テスト訳文の `<unk>` 出現率やワースト 10 文を確かめる。
+**ノートブックで確認**（CPU / GPU） — 翻訳メモリ・統計的機械翻訳の演習（第 1〜3 節）で、第 1 節の翻訳メモリ (TM) による正規化編集距離ベースの Fuzzy Match 検索（`87.5%` / `88.9%` / `72.7%` の単語差分提示と用語統一チェック）、第 2 節の IBM Model 1 が語順の異なる英日対訳から語彙翻訳確率 $t(f \mid e)$ を獲得する様子と翻訳モデルと言語モデルの積で語順を決める仕組み、さらに第 3 節の双方向アライメント対称化で `Intersection` (`F1 = 0.760`, `AER = 0.240`) や `Union`（`F1 = 0.818`, `AER = 0.182`、誤リンク `('look', '夏')` がフレーズ抽出を阻害）に対し `Grow-Diag-Final-And` が `F1 = 0.831`・`AER = 0.169` を達成すること、および未知組み合わせ 8 文のデコードで `IBM1 単語翻訳` (`BLEU = 8.25`, `Exact = 0.000`)・`単調 Phrase-SMT` (`BLEU = 66.79`, `Exact = 0.375`) に対し並び替えとバイグラム LM を組み合わせた `Phrase-SMT (Reordering+LM)` が `BLEU = 95.76`・`Exact = 0.875` へ飛躍することを確かめる。また、BLEU・コーパス演習（第 4 節）で、ノイジー対訳 34 文から長さ比・日本語文字率・数値一致・双方向 IBM Model 1 信頼度スコア (`tau = 0.32`) によってノイズ 10 文をすべて除外し、単語アライメント `F1` が `0.818` → `0.844`、`Recall` が `0.783` → `0.826` へ向上し `study -> 学ぶ` の確率が `0.25` → `0.73` へ改善することを確認する。あわせて Eole 演習で開発データの BLEU に基づくチェックポイント選択（`step` 別の Dev BLEU 推移）と、テスト訳文の `<unk>` 出現率やワースト 10 文を確かめる。
 
 ### 3
 

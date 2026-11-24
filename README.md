@@ -5,7 +5,7 @@
 
 ## 演習
 
-第1章から5章までは演習があります。ノートブック名をクリックすると GitHub 上で閲覧でき、「Open in Colab」をクリックすると Google Colab で直接実行できます。GPU 演習を含む全 29 本のノートブックに整理済みの実行結果を埋め込んでいるため、GitHub 上でも出力結果までそのまま読めます。
+第1章から5章までは演習があります。ノートブック名をクリックすると GitHub 上で閲覧でき、「Open in Colab」をクリックすると Google Colab で直接実行できます。GPU 演習を含む全 31 本のノートブックに整理済みの実行結果を埋め込んでいるため、GitHub 上でも出力結果までそのまま読めます。
 
 - **CPU** — Colab の標準ランタイムで実行できます。初めての方は、第1章の [分類タスクの評価尺度と閾値調整](notebooks/ch1_evaluation.ipynb) から始められます。
 - **GPU 推奨** — CPU でも動く設定がありますが、学習や推論に時間がかかります。
@@ -18,9 +18,12 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
 - **CPU** · [分類タスクの評価尺度と閾値調整（Fβ・特異度・不均衡データ・統計的有意差検定）](notebooks/ch1_evaluation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_evaluation.ipynb)
   - 最終確認 2026/11/23
   - 正解率・適合率・再現率・特異度・偽陽性率・F値（F0.5 / F1 / F2）を定義式から実装して `scikit-learn` と比較し、再現率 0.90 制約を満たす閾値調整、不均衡データでの「正解率の罠」、多クラス分類の Macro / Micro 平均に加え、第 6 節では McNemar 検定（正確二項検定・連続性補正付き $\chi^2$）および対応のあるブートストラップ法 (`Koehn 2004`, $B=5{,}000$) による統計的有意差検定とサンプルサイズ $N \in \{50, 100, 200, 500\}$ が 95% 信頼区間幅・検出力に与える影響を体験できます（CPU のみ・数秒で実行できます）。
-- **CPU** · [自然言語処理システムの開発サイクル（文分割・データ分割・計算量・遠距離教師あり学習・半教師あり学習）](notebooks/ch1_design_cycle.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_design_cycle.ipynb)
-  - 最終確認 2026/11/22
-  - [サンプルデータ](misc/covid-annotation.csv)を使い、素朴な句点文分割が破綻するケース（「モーニング娘。」や括弧内句点）への対処、小さな評価データでハイパーパラメータを選び続けることによる過大評価の実験、`O(1)`・`O(n)`・`O(n^2)`（ハッシュ探索・線形探索・全対計算）の計算量スケーリング実測、第 4 節の遠距離教師あり学習 (Distant Supervision) による訓練データ自動構築・偶然共起ノイズ分析・マルチインスタンス集約に加え、第 5 節の半教師あり学習（少数シードと 2 つの独立ビューによる共訓練 `Co-training`、`Yarowsky` の `one sense per discourse` 制約、単一ビュー自己学習との比較、閾値低下によるセマンティックドリフト）を CPU のみ・数秒で体験できます。
+- **CPU** · [自然言語処理システムの開発サイクル（文分割・データ分割・計算量）](notebooks/ch1_design_cycle.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_design_cycle.ipynb)
+  - 最終確認 2026/11/24
+  - [サンプルデータ](misc/covid-annotation.csv)を使い、素朴な句点文分割が破綻するケース（「モーニング娘。」や括弧内句点）への対処、小さな選択用データ（60 件）でハイパーパラメータを選び続けることによる過大評価の実験（選択用 `0.950` vs 未知テスト 780 件 `0.908`）、および `O(1)`・`O(n)`・`O(n^2)`（ハッシュ探索・線形探索・全対計算）の計算量スケーリング実測を CPU のみ・数秒で体験できます。
+- **CPU** · [半教師あり学習と遠距離教師あり学習（Yarowsky・共訓練・マルチインスタンス集約）](notebooks/ch1_semisupervised.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_semisupervised.ipynb)
+  - 最終確認 2026/11/24
+  - 第 1 節では半教師あり学習として、6 個のシード表記ルール（`Macro-F1 = 0.000`）や単一ビュー自己学習（View A のみ `0.167`、結合 `0.167`）と比べ、2 つの独立ビューによる共訓練 (Co-training) と `Yarowsky` の `one sense per discourse` 制約の組合せが Round 1（36 文・`0.878`）→ Round 2（45 文・`1.000`）で未知テスト 24 文を精度良く分類できること、および確信度閾値を `0.35` まで下げると誤り率 `0.289`（13 件）のセマンティックドリフトが起きて `Macro-F1 = 0.465` へ低下することを確認できます。さらに第 2 節では遠距離教師あり学習 (Distant Supervision) による知識ベース 15 組と 36 文からの訓練データ自動構築・偶然共起ノイズ（24 文中 6 文・`25.0%`）の分析と、文単位予測 (`Macro-F1 = 0.775`) からマルチインスタンス集約による `1.000` への改善を CPU のみ・数秒で体験できます。
 - **CPU** · [TF-IDF と線形モデルによる文書分類ベースライン・エラー分析・素性設計アブレーション](notebooks/ch1_tfidf_baseline.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch1_tfidf_baseline.ipynb)
   - 最終確認 2026/11/24
   - [サンプルデータ](misc/covid-annotation.csv)を使い、[SVM・k-NN・ナイーブベイズ演習](notebooks/ch2_svm_knn.ipynb)および[日本語 BERT 演習](notebooks/ch2_bert.ipynb)と `文書ID` が一致する同一の層化分割（訓練 810 件・開発 90 件・テスト 100 件）上で TF-IDF + ロジスティック回帰の軽量ベースラインを構築します。予測に寄与している特徴量（重み）の可視化や誤分類事例と `コメント` 列の照合によるエラー分析に加え、第 5 節ではテストデータを見ずに訓練 5 分割 CV と開発データのみで形態素解析器不要の 5 段階素性設計アブレーション（文字 1-gram・`char_wb 1〜3`・`char_wb 1〜4 + 簡易トークン 1〜2`・否定・伝聞・主語・仮定手がかり統合ハイブリッド素性）を比較し、`Test Acc 0.9600 → 0.9900`・`Test F1 0.9592 → 0.9899`（救済 ID `32, 37, 47`、残存 `ID 16`）を CPU のみ・数秒で体験できます。
@@ -78,8 +81,8 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
   - 最終確認 2026/11/21
   - 単語ラティスと Viterbi アルゴリズムによる日本語単語分割のコスト最小化（前方最長一致の失敗例と DP テーブルの追跡）、かな漢字ラティスと単語バイグラム言語モデル + Viterbi（N-best 候補列）による確率的仮名漢字変換の同音異義語解消、同一の素性空間で学習した MEMM（局所正規化）と線形鎖 CRF（大域正規化）の比較実験による「ラベルバイアス問題」の検証に加え、第 4 節では点推定（Pointwise 予測）による単語分割・部分的アノテーションでの専門用語適応・文脈による分割一貫性の注意点を確かめられます（CPU のみ・数秒で実行できます）。
 - **CPU** · [編集距離と n-gram 言語モデルによる誤り検出・訂正](notebooks/ch3_edit_distance_lm.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_edit_distance_lm.ipynb)
-  - 最終確認 2026/11/23
-  - Levenshtein 距離と隣接文字入れ替え（swap）を考慮した制約付き Damerau–Levenshtein 距離（OSA）の動的計画法実装、スペル訂正の候補ランキング、単語バイグラム言語モデル（パープレキシティ）による誤り検出に加え、第 4 節では編集距離（通信路モデル）とバイグラム言語モデルを組み合わせた雑音のある通信路モデル（Noisy Channel Model）による文脈スペル・冠詞訂正を、第 5 節では Knight & Graehl（1997）の音訳通信路モデル（英語音素・カタカナモーラの重み付き DP アライメントと英語言語モデルによるカタカナ外来語 15 語の逆音訳）を、さらに第 6 節では DP トークンアライメントによる編集スパン抽出（M2 / ERRANT 方式）と 12 文・3 アノテータ上での Token Accuracy の罠・Single-Ref vs Multi-Ref Best-Annotator $F_{0.5}$ 評価を体験できます（CPU のみ・数秒で実行できます）。
+  - 最終確認 2026/11/24
+  - Levenshtein 距離と隣接文字入れ替え (swap) を考慮した制約付き Damerau–Levenshtein 距離 (OSA) の動的計画法実装、スペル訂正の候補ランキング、単語バイグラム言語モデル（パープレキシティ）による誤り検出に加え、第 4 節では編集距離（通信路モデル）とバイグラム言語モデルを組み合わせた雑音のある通信路モデル (Noisy Channel Model) による文脈スペル・冠詞訂正を、第 5 節では DP トークンアライメントによる編集スパン抽出（M2 / ERRANT 方式）と 12 文・3 アノテータ上での Token Accuracy の罠・Single-Ref vs Multi-Ref Best-Annotator $F_{0.5}$ 評価（`Balanced`: `0.562 → 0.988`）を、さらに第 6 節の発展演習では Knight & Graehl (1997) の音訳通信路モデル（英語音素・カタカナモーラの重み付き DP アライメントと英語言語モデルによるカタカナ外来語 15 語の逆音訳、Top-1 `0.467 → 1.000`）を体験できます（CPU のみ・数秒で実行できます）。
 - **GPU 必須** · [Fast GECToR と W&I による英語誤り検出・訂正](notebooks/ch3_gector.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_gector.ipynb)
   - 最終確認 2026/11/21
   - データを cLang-8 から、BEA-2019 共有タスクで公開された W&I+LOCNESS v2.1 に変更しました。W&I は非営利の研究・教育目的なら申請なしでダウンロードできるので、Lang-8 のデータの申請や cLang-8 の作成が不要になり、1つのノートブックで最後まで実行できます。
@@ -93,9 +96,12 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
 - **CPU** · [文書要約のベースライン・抽象型要約・ROUGE とハルシネーション](notebooks/ch4_summarization.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_summarization.ipynb)
   - 最終確認 2026/11/21
   - ROUGE-1 / ROUGE-2 / ROUGE-L の定義式実装と書籍 図 4.5 の手計算例検証、抽出型要約 3 手法（リード法・TextRank・LexRank）の比較、複数文抽出 (k=2) の冗長性を抑える MMR に加え、第 5〜6 節では抽象型要約の **Pointer-Generator（コピー機構＋カバレージ機構）** の動作と反復抑制、およびハルシネーション要約が忠実な言い換え要約より高い ROUGE を得る逆転現象と事実整合性検査を体験できます（CPU のみ・数秒で実行できます）。
-- **CPU** · [統計的機械翻訳の基礎（IBM Model 1・フレーズベース SMT）・BLEU 評価・翻訳メモリ・対訳フィルタリング](notebooks/ch4_smt_bleu.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt_bleu.ipynb)
-  - 最終確認 2026/11/23
-  - EM アルゴリズムによる IBM Model 1 の単語アライメント学習・可視化、BLEU の定義式実装（クリッピング・簡潔性ペナルティ・`sacrebleu` 検証・書籍 図 4.11 の再現・言い換えや否定反転での限界）、第 5〜6 節の翻訳メモリ (TM) による正規化編集距離の Fuzzy Match 検索・用語統一チェックとコンパラブルコーパス・Web 対訳からのノイズフィルタリングに加え、第 7 節では双方向 IBM Model 1 からのアライメント対称化（Intersection・Union・`Grow-Diag-Final-And` による AER 改善）、整合フレーズ対抽出と双方向フレーズ翻訳確率推定、および歪みコストと日本語バイグラム言語モデルを組み込んだフレーズベース SMT デコーディング（単調 vs 並び替え・単語翻訳との BLEU 比較）を CPU のみ・数秒で体験できます。
+- **CPU** · [翻訳メモリと統計的機械翻訳の基礎（IBM Model 1・フレーズベース SMT）](notebooks/ch4_smt.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt.ipynb)
+  - 最終確認 2026/11/24
+  - 第 1 節では翻訳メモリ (TM) による正規化編集距離の Fuzzy Match 検索（`100.0%` 完全一致、`87.5%` / `88.9%` / `72.7%` 部分一致の単語差分提示と用語統一チェック）を、第 2 節では EM アルゴリズムによる IBM Model 1 の単語アライメント学習・ヒートマップ可視化を扱います。さらに第 3 節では双方向 IBM Model 1 からのアライメント対称化（`Intersection` `F1=0.760`・`Union` `F1=0.818` に対し `Grow-Diag-Final-And` が `F1=0.831`・`AER=0.169`）、整合フレーズ対抽出と双方向フレーズ翻訳確率推定、および歪みコストと日本語バイグラム言語モデルを組み込んだフレーズベース SMT デコーディング（未知 8 文で `IBM1 単語翻訳` `BLEU=8.25`・`単調 Phrase-SMT` `BLEU=66.79` に対し `Phrase-SMT (Reordering+LM)` が `BLEU=95.76`・`Exact=0.875`）を CPU のみ・数秒で体験できます。
+- **CPU** · [機械翻訳の自動評価（BLEU）と対訳コーパスのノイズフィルタリング](notebooks/ch4_bleu_corpus.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_bleu_corpus.ipynb)
+  - 最終確認 2026/11/24
+  - 第 1〜3 節では BLEU の定義式実装（クリッピング・簡潔性ペナルティ・`sacrebleu` との一致 `68.1561` 検証）、書籍 図 4.11 の再現（シングル `BLEU-2 = 0.38` vs マルチ `0.71`・文単位 BLEU）、および言い換え（`10.55`）や否定反転 `"not"`（`59.00`）での表層一致評価の限界を確認します。さらに第 4 節では 34 文のノイジー対訳コーパスからの長さ比・日本語文字率・数値一致・双方向 IBM Model 1 信頼度スコア (`tau = 0.32`) によるノイズ 10 文の完全除外（クリーン 24 文全保持）と、フィルタ前後の語彙翻訳確率改善（`study -> 学ぶ` `0.25 → 0.73`）および単語アライメント精度向上（`Recall 0.783 → 0.826`, `F1 0.818 → 0.844`）を CPU のみ・数秒で体験できます。
 - **GPU 必須** · [Eole による英日ニューラル機械翻訳演習](notebooks/ch4_eole.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_eole.ipynb)
   - 最終確認 2026/11/21
   - 書籍で紹介している OpenNMT-py は2024年の v3.5.1 で開発が止まっているので、後継の [Eole](https://github.com/eole-nlp/eole) を使う演習に変更しました。コマンド名（`onmt_train` → `eole train` など）と設定ファイルの書き方が少し違いますが、演習の内容は同じです（実行結果埋め込み済み）。
@@ -112,9 +118,6 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
 
 ### 第5章
 
-- **CPU** · [形態素解析のユーザ辞書作成・未知語候補抽出と単体テスト](notebooks/ch5_dictionary.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_dictionary.ipynb)
-  - 最終確認 2026/11/24
-  - 書籍 5-3（辞書作成：5-3-1・5-3-2・5-3-3）に対応し、システム辞書だけでは分割・正規化がうまくいかない専門用語を `SudachiPy` のユーザ辞書 CSV（表層形・品詞・読み・正規化形）へ登録して `sudachipy ubuild` でコンパイルし、エラー記録と単体テストで動作を検証します。さらに第 4 節では分野コーパス（30 文）と背景コーパス（30 文）の比較から内部結合度 (PMI)と分野特異度（対数尤度比 $G^2$, LLR）で専門複合語 8 語を自動抽出し、`.reading_form()` 連結による 18 列 CSV 自動生成と統合辞書 `user_auto.dic` の再ビルドを経て、未知評価文の完全一致率 `0.000 → 1.000`（平均分割数 `2.75 → 1.00`）および回帰テスト全件合格を確認できます（CPU のみ・十数秒で実行できます）。
 - **CPU** · [言語資源のクレンジング・重複排除と PII マスキング](notebooks/ch5_data_cleaning.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_data_cleaning.ipynb)
   - 最終確認 2026/11/18
   - 書籍 5-1・5-4 に対応し、HTML タグ・URL 除去や Unicode 正規化（NFKC）、文字 n-gram の Jaccard 係数による近似重複検出とデータリーク実験に加え、メールアドレス・電話番号・郵便番号等の個人情報（PII）マスキングおよび日本語比率・記号比率によるスパム除外を体験できます（CPU のみ・数秒で実行できます）。
@@ -122,6 +125,9 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
   - 最終確認 2026/11/21
   - 書籍 5-2（仕様・品質管理・アノテーションの外注）および 5-6（演習：フレーズ分類ラベルアノテーション）に対応します。書籍に載せている演習例は楽天データセットによるものなので配布はできませんが、配布可能な宿泊レビュー風のサンプルデータ（100件）を作成し、スプレッドシート用の [Excel ファイル](misc/phrase-annotation.xlsx)と Colab 演習用の [CSV ファイル](misc/phrase-annotation.csv)を公開しました。
   - 2人の作業者による評価極性アノテーションから混同行列と Cohen の κ を計算し、不一致事例の分析・仕様書を改訂して未知データで一致度を測り直す手順に加え、3人以上の作業者に対する Fleiss の κ とスパマー検出、欠損あり行列や 5 段階順序尺度に対応する Krippendorff の α を体験できます（CPU のみ・数秒で実行できます）。
+- **CPU** · [形態素解析のユーザ辞書作成・未知語候補抽出と単体テスト](notebooks/ch5_dictionary.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_dictionary.ipynb)
+  - 最終確認 2026/11/24
+  - 書籍 5-3（辞書作成：5-3-1・5-3-2・5-3-3）に対応し、システム辞書だけでは分割・正規化がうまくいかない専門用語を `SudachiPy` のユーザ辞書 CSV（表層形・品詞・読み・正規化形）へ登録して `sudachipy ubuild` でコンパイルし、エラー記録と単体テストで動作を検証します。さらに第 4 節では分野コーパス（30 文）と背景コーパス（30 文）の比較から内部結合度 (PMI)と分野特異度（対数尤度比 $G^2$, LLR）で専門複合語 8 語を自動抽出し、`.reading_form()` 連結による 18 列 CSV 自動生成と統合辞書 `user_auto.dic` の再ビルドを経て、未知評価文の完全一致率 `0.000 → 1.000`（平均分割数 `2.75 → 1.00`）および回帰テスト全件合格を確認できます（CPU のみ・十数秒で実行できます）。
 - **CPU** · [機械学習によるコーパス品質管理と能動学習](notebooks/ch5_corpus_quality.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_corpus_quality.ipynb)
   - 最終確認 2026/11/21
   - 書籍 5-4-3（コーパス作成の品質管理）に対応し、[サンプルデータ](misc/phrase-annotation.csv)（100件）を用いて仕様改訂前後のラベルで学習した分類器の未知データ精度比較、学習曲線による必要データ量の見積もり、交差検証の予測確率を用いたアノテーションミス候補の抽出、および能動学習シミュレーション（Least Confidence による不確実性サンプリング vs ランダムサンプリング）を体験できます（CPU のみ・数秒で実行できます）。
