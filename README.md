@@ -40,7 +40,7 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
   - 最終確認 2026/11/25
   - （書籍 2-1）[サンプルデータ](misc/phrase-annotation.csv)（100 件）で、極性辞書だけ・否定と逆接を考慮したルール・教師あり学習を比べ、複数文のレビューで文書単位と文単位の分析を比べます。語彙ネットワークとスピンモデル（高村ら 2006）で、少数のシード語から極性辞書を自動で広げることも試します。
 - **CPU** · [SVM カーネル（線形 vs RBF）・k 近傍法・ナイーブベイズによる文書分類と根拠分析](notebooks/ch2_svm_knn.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_svm_knn.ipynb)
-  - 最終確認 2026/11/21
+  - 最終確認 2026/11/25
   - （書籍 2-1・2-2）[サンプルデータ](misc/covid-annotation.csv)の TF-IDF 表現で線形・多項式・RBF カーネルの SVM を比べ、k 近傍法で予測の根拠になる事例を示します。ナイーブベイズのラプラス平滑化と、クラスの不均衡に強い Complement ナイーブベイズも確かめます。
 - **CPU** · [単語埋め込み（分散表現）と文脈付き埋め込みの比較](notebooks/ch2_word_embeddings.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_word_embeddings.ipynb)
   - 最終確認 2026/11/25
@@ -56,10 +56,10 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
   - 最終確認 2026/11/21
   - （書籍 2-3）1〜5 段階のスコア付きの作文サンプル（30 件）から接続表現や文字種の比率などの特徴量を取り出し、分類モデルの信頼度と線形モデルの素性の寄与で予測の根拠を示します。少ないデータでの特徴量ベースとファインチューニング（過学習と破壊的忘却）も比べます。
 - **CPU** · [順序尺度の評価（QWK・Strict/Lenient・分類 vs 回帰）](notebooks/ch2_ordinal_qwk.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_ordinal_qwk.ipynb)
-  - 最終確認 2026/11/21
+  - 最終確認 2026/11/25
   - （書籍 2-3）書籍の表 2.1 の混同行列から Strict / Lenient 正解率と重みつきカッパ係数 (QWK) を実装します。[サンプルデータ](misc/phrase-annotation.csv)の 5 段階スコアで、回帰の予測が平均に寄る「MSE の罠」と、その補正方法を比べます。
 - **CPU** · [ランキング問題と順位評価指標（Kendall's τ・Spearman's ρ・nDCG）](notebooks/ch2_ranking.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch2_ranking.ipynb)
-  - 最終確認 2026/11/18
+  - 最終確認 2026/11/25
   - （書籍 2-3）Kendall の τ・Spearman の ρ・nDCG を定義式から実装し、[サンプルデータ](misc/phrase-annotation.csv)で Pairwise ランキングと Pointwise 回帰を比べます。スコアを単調に変換しても、ランキングの予測順位が変わらないことも確かめます。
 
 ### 第3章
@@ -115,14 +115,14 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
   - 最終確認 2026/11/18
   - （書籍 5-1・5-4）HTML タグや URL の除去と NFKC 正規化、文字 n-gram の Jaccard 係数による近似重複の検出とデータリークの実験、個人情報 (PII) のマスキングとスパムの除外を確かめます。
 - **CPU** · [フレーズ分類ラベルアノテーションと作業者間一致率](notebooks/ch5_annotation.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_annotation.ipynb)
-  - 最終確認 2026/11/21
+  - 最終確認 2026/11/25
   - （書籍 5-2、5-6「演習：フレーズ分類ラベルアノテーション」）2 人の作業者の評価極性アノテーションから Cohen の κ を計算し、不一致の分析と仕様書の改訂を経て一致率を測り直します。3 人以上での Fleiss の κ とスパマーの検出、欠損や順序尺度を扱える Krippendorff の α も確かめます。
   - 書籍の演習例は楽天データセットによるもので配布できないので、配布できる宿泊レビュー風のサンプルデータ（100 件）を作り、スプレッドシート用の [Excel ファイル](misc/phrase-annotation.xlsx)と Colab 演習用の [CSV ファイル](misc/phrase-annotation.csv)を公開しています。
 - **CPU** · [形態素解析のユーザ辞書作成と単体テスト](notebooks/ch5_dictionary.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_dictionary.ipynb)
   - 最終確認 2026/11/24
   - （書籍 5-3）システム辞書ではうまく分割できない専門用語を `SudachiPy` のユーザ辞書に登録してビルドし、単体テストで確かめます。分野コーパスと背景コーパスを比べて（PMI と対数尤度比）専門用語の候補を自動で抽出し、辞書に追加するサイクルも試します。
 - **CPU** · [機械学習によるコーパス品質管理と能動学習](notebooks/ch5_corpus_quality.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_corpus_quality.ipynb)
-  - 最終確認 2026/11/21
+  - 最終確認 2026/11/25
   - （書籍 5-4-3）[サンプルデータ](misc/phrase-annotation.csv)で、仕様の改訂前後のラベルで学習した分類器の比較、学習曲線、予測確率によるアノテーションミスの候補の抽出、能動学習（不確実性サンプリング）を確かめます。
 - **CPU** · [パイプライン処理のモジュール分割と前後処理・デバッグ](notebooks/ch5_toolkit_pipeline.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch5_toolkit_pipeline.ipynb)
   - 最終確認 2026/11/22
