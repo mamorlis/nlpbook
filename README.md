@@ -67,7 +67,7 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
 - **CPU** · [固有表現認識の基礎（ガゼッティア・BIO タグ・素性テンプレートと CRF・サブワード整合）](notebooks/ch3_ner_gazetteer_subword.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_ner_gazetteer_subword.ipynb)
   - 最終確認 2026/11/21
   - （書籍 3-1）ガゼッティアの最長一致と多義語の誤マッチの対策、BIO タグと `sklearn-crfsuite` による素性テンプレートの比較、`SentencePiece` のサブワードと BIO ラベルの整合を確かめます。
-- **GPU 推奨** · [BERT による固有表現認識（Token Classification）](notebooks/ch3_bert_ner.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_bert_ner.ipynb)
+- **GPU 推奨** · [BERT による固有表現認識 (Token Classification)](notebooks/ch3_bert_ner.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_bert_ner.ipynb)
   - 最終確認 2026/11/21
   - （書籍 3-1）日本語 BERT を Token Classification としてファインチューニングし、`seqeval` でエンティティ単位の F1 を測ります。訓練データにない固有表現への汎化をガゼッティアと比べ、エラー分析をします。
 - **CPU** · [形態素解析とサブワード分割（分割単位・正規化・未知語処理・Subword Regularization）](notebooks/ch3_morphology_ner.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch3_morphology_ner.ipynb)
@@ -92,7 +92,7 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
 - **CPU** · [翻訳メモリと統計的機械翻訳の基礎（IBM Model 1・フレーズベース SMT）](notebooks/ch4_smt.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_smt.ipynb)
   - 最終確認 2026/11/24
   - （書籍 4-2-1・4-2-2）翻訳メモリのあいまい一致検索、EM アルゴリズムによる IBM Model 1 の単語アライメント、双方向アライメントの対称化とフレーズ抽出、フレーズベース SMT のデコーディングを、小さな対訳で一通り実装します。
-- **CPU** · [機械翻訳の自動評価（BLEU）と対訳コーパスのノイズフィルタリング](notebooks/ch4_bleu_corpus.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_bleu_corpus.ipynb)
+- **CPU** · [機械翻訳の自動評価 (BLEU) と対訳コーパスのノイズフィルタリング](notebooks/ch4_bleu_corpus.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_bleu_corpus.ipynb)
   - 最終確認 2026/11/24
   - （書籍 4-2-4・4-2-5）BLEU を定義式から実装し、書籍の図 4.11（参照訳の数と BLEU）の再現と、言い換えや否定に対する BLEU の限界を確かめます。ノイズを含む対訳コーパスを長さの比や IBM Model 1 の信頼度でふるいにかけ、単語アライメントが改善することも確かめます。
 - **GPU 推奨** · [機械翻訳の自動評価と人手評価の相関（BLEU・chrF・BERTScore・COMET・品質推定）](notebooks/ch4_mt_eval.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mamorlis/nlpbook/blob/main/notebooks/ch4_mt_eval.ipynb)
@@ -143,3 +143,7 @@ GPU を使う場合は、Colab の「ランタイム」→「ランタイムの�
 
 [Amazon のページ](https://amzn.to/3K0j914) で購入できます（書籍版、Kindle 版ともにあります）。
 EPUB/PDF 版は[技術評論社のページ](https://gihyo.jp/dp/ebook/2024/978-4-297-13864-6)から購入できます。
+
+## ライセンス
+
+本リポジトリのノートブック・コードは [MIT License](LICENSE) のもとで公開しています。
